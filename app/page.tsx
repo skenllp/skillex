@@ -7,7 +7,6 @@ import CareerOutcomes from "@/components/CareerOutcomes";
 import WhySkillex from "@/components/WhySkillex";
 import CampusExperience from "@/components/CampusExperience";
 import FloorPlan from "@/components/FloorPlan";
-import CourseShowcase from "@/components/CourseShowcase";
 import CareerJourney from "@/components/CareerJourney";
 import StudentStories from "@/components/StudentStories";
 import CareerInsights from "@/components/CareerInsights";
@@ -41,9 +40,6 @@ export default function Home() {
       </Reveal>
       <Reveal direction="scale" delay={40}>
         <FloorPlan />
-      </Reveal>
-      <Reveal direction="up" delay={40}>
-        <CourseShowcase />
       </Reveal>
       <Reveal direction="up" delay={40}>
         <CareerJourney />
