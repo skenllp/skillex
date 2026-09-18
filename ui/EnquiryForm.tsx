@@ -28,16 +28,16 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
     }, 400);
   };
 
-  const labelClass = `mb-2 block text-[13px] font-medium ${dark ? "text-white/80" : "text-charcoal"}`;
-  const inputClass = `w-full border px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-skill-green ${
+  const labelClass = `mb-1.5 block text-[12.5px] sm:text-[13px] font-medium ${dark ? "text-white/80" : "text-charcoal"}`;
+  const inputClass = `w-full rounded-md border px-3.5 py-2 text-[13.5px] sm:py-2.5 sm:text-[14px] outline-none transition-colors focus:border-skill-green ${
     dark
       ? "border-white/20 bg-transparent text-white placeholder:text-white/40"
       : "border-black/15 bg-white text-charcoal placeholder:text-medium-gray/60"
   }`;
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3.5 sm:gap-4">
-      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
         <div>
           <label htmlFor="name" className={labelClass}>
             Full name
@@ -87,9 +87,9 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         <textarea
           id="message"
           name="message"
-          rows={3}
+          rows={2}
           placeholder="Tell us a little about what you're looking for"
-          className={inputClass}
+          className={`${inputClass} sm:min-h-[70px]`}
         />
       </div>
 
@@ -97,7 +97,7 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         type="submit"
         disabled={submitting}
         aria-live="polite"
-        className="mt-1 inline-flex min-h-[46px] items-center justify-center gap-2 bg-skill-green px-6 text-[14.5px] font-semibold text-charcoal transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-skill-green w-full sm:w-auto"
+        className="mt-0.5 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-skill-green px-6 text-[14px] font-semibold text-charcoal transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-skill-green w-full sm:w-auto"
       >
         {submitting ? "Sending..." : "Submit Enquiry"} <ArrowRight size={16} />
       </button>

@@ -210,7 +210,7 @@ export default function Hero() {
 
           {/* Right Column: Redesigned Translucent Fast-Track Glass Capsule with Chroma Cursor Border Glow */}
           <div
-            className={`w-full lg:col-span-5 transition-all duration-500 ${
+            className={`hidden lg:block w-full lg:col-span-5 transition-all duration-500 ${
               cinematicMode ? "opacity-0 pointer-events-none translate-y-8" : "opacity-100"
             }`}
             style={{
