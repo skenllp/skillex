@@ -8,14 +8,14 @@ import Reveal from "@/ui/Reveal";
 type TabKey = keyof typeof careerMatrix;
 
 export default function CareerOutcomes() {
-  const [activeTab, setActiveTab] = useState<TabKey>("office-administration");
+  const [activeTab, setActiveTab] = useState<TabKey>("office-administration-hr");
   const currentData = careerMatrix[activeTab];
 
   return (
-    <section className="w-full bg-charcoal px-5 py-20 text-white md:px-10 md:py-28">
+    <section className="w-full bg-charcoal px-5 py-10 text-white md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
         {/* Section Header */}
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <Reveal direction="up">
             <p className="mb-3 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green uppercase">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -41,7 +41,7 @@ export default function CareerOutcomes() {
         </div>
 
         {/* Tab Controls */}
-        <div className="mb-10 flex flex-wrap gap-3 border-b border-white/10 pb-4">
+        <div className="mb-8 flex flex-wrap gap-3 border-b border-white/10 pb-4">
           {(Object.keys(careerMatrix) as TabKey[]).map((key) => {
             const item = careerMatrix[key];
             const isActive = activeTab === key;
@@ -70,7 +70,7 @@ export default function CareerOutcomes() {
         </div>
 
         {/* Tab Content: Roles Grid */}
-        <div className="mb-16 rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-md">
+        <div className="mb-12 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md">
           <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
               <span className="text-[12px] font-bold uppercase tracking-wider text-skill-green">
@@ -82,7 +82,7 @@ export default function CareerOutcomes() {
               <p className="text-[14px] text-white/60">{currentData.subtitle}</p>
             </div>
             <span className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-white/75 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
-              <Sparkles size={14} className="text-skill-green" /> 100% Placement Assistance
+              <Sparkles size={14} className="text-skill-green" /> Career &amp; Placement Assistance
             </span>
           </div>
 
@@ -108,7 +108,7 @@ export default function CareerOutcomes() {
         </div>
 
         {/* Industry Hiring Sectors (Competitor feature inspired) */}
-        <div className="rounded-2xl border border-white/10 bg-black/40 p-7 sm:p-8">
+        <div className="rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-7">
           <div className="mb-5 flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-skill-green/20 text-skill-green">
               <Building2 size={18} />

@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
 import PhotoPlaceholder from "@/ui/PhotoPlaceholder";
 import EnquiryForm from "@/ui/EnquiryForm";
+import { courses } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Enquire Now — Skillex",
   description: "Send an admission enquiry to Skillex and take the first step toward your next career.",
 };
 
-export default function EnquirePage() {
+export default function EnquirePage({
+  searchParams,
+}: {
+  searchParams?: { course?: string };
+}) {
+  // Arriving from a course page (e.g. /enquire?course=digital-marketing)
+  // preselects that course so learners never have to type it again.
+  const preselectedCourse = courses.find((c) => c.slug === searchParams?.course)?.slug;
+
   return (
     <main className="relative flex min-h-screen w-full items-center overflow-hidden pt-[96px]">
       <PhotoPlaceholder label="Enquire background — placeholder" className="absolute inset-0 h-full w-full" />
@@ -27,7 +36,7 @@ export default function EnquirePage() {
           </p>
         </div>
         <div className="bg-white p-7 md:p-10">
-          <EnquiryForm />
+          <EnquiryForm defaultCourse={preselectedCourse} />
         </div>
       </div>
     </main>

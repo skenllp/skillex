@@ -24,8 +24,24 @@ export default function ChromaGrid({
   const containerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: -1000, y: -1000 });
   const [active, setActive] = useState(false);
+  // Fine (mouse-like) pointer only — touch devices don't fire the mousemove/
+  // mouseleave pairs this effect relies on, so the glow could otherwise get
+  // stuck lit after a single tap. Skip the listeners entirely on touch.
+  const [canHover, setCanHover] = useState(false);
 
   useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setCanHover(query.matches);
+    const listener = (e: MediaQueryListEvent) => setCanHover(e.matches);
+    query.addEventListener("change", listener);
+    return () => query.removeEventListener("change", listener);
+  }, []);
+
+  useEffect(() => {
+    if (!canHover) {
+      setActive(false);
+      return;
+    }
     let ticking = false;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -65,7 +81,7 @@ export default function ChromaGrid({
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeaveWindow);
     };
-  }, []);
+  }, [canHover]);
 
   return (
     <div

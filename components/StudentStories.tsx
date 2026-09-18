@@ -17,9 +17,9 @@ export default function StudentStories() {
   };
 
   return (
-    <section className="w-full bg-white px-5 py-20 md:px-10 md:py-28">
+    <section className="w-full bg-white px-5 py-10 md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
-        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -57,7 +57,7 @@ export default function StudentStories() {
           {studentStories.map((s, i) => (
             <div
               key={i}
-              className="group flex w-[320px] shrink-0 snap-start flex-col justify-between rounded-2xl border border-black/8 bg-light-gray/30 p-6 transition-all duration-300 hover:border-skill-green/50 hover:bg-white hover:shadow-xl hover:shadow-black/5 md:w-[350px]"
+              className="group flex w-[320px] shrink-0 snap-start flex-col justify-between rounded-2xl border border-black/8 bg-light-gray/30 p-5 transition-all duration-300 hover:border-skill-green/50 hover:bg-white hover:shadow-xl hover:shadow-black/5 md:w-[350px]"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">

@@ -4,9 +4,9 @@ import Reveal from "@/ui/Reveal";
 
 export default function FinalCTA() {
   return (
-    <section className="relative w-full overflow-hidden px-5 py-24 md:px-10 md:py-32">
+    <section className="relative w-full overflow-hidden px-5 py-10 md:px-10 md:py-16">
       <Image
-        src="/assets/course-hospitality.jpg"
+        src="/assets/course-office-administration.jpg"
         alt="Skillex campus"
         fill
         className="object-cover object-[64%_36%]"

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 
 interface ChromaSpotlightProps {
   children: React.ReactNode;
@@ -28,24 +28,37 @@ export default function ChromaSpotlight({
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: -1000, y: -1000 });
   const [opacity, setOpacity] = useState(0);
+  // Fine (mouse-like) pointer only — on touch/coarse pointers the glow
+  // has no "leave" event to reset it, so it would stay stuck after a tap.
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setCanHover(query.matches);
+    const listener = (e: MediaQueryListEvent) => setCanHover(e.matches);
+    query.addEventListener("change", listener);
+    return () => query.removeEventListener("change", listener);
+  }, []);
+
+  const isInteractive = interactive && canHover;
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!interactive || !containerRef.current) return;
+    if (!isInteractive || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     setPosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
     setOpacity(1);
-  }, [interactive]);
+  }, [isInteractive]);
 
   const handleMouseEnter = useCallback(() => {
-    if (interactive) setOpacity(1);
-  }, [interactive]);
+    if (isInteractive) setOpacity(1);
+  }, [isInteractive]);
 
   const handleMouseLeave = useCallback(() => {
-    if (interactive) setOpacity(0);
-  }, [interactive]);
+    if (isInteractive) setOpacity(0);
+  }, [isInteractive]);
 
   return (
     <div

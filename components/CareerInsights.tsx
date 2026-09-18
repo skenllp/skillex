@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import PhotoPlaceholder from "@/ui/PhotoPlaceholder";
 import Reveal from "@/ui/Reveal";
@@ -5,9 +6,9 @@ import { insightArticles } from "@/lib/content";
 
 export default function CareerInsights() {
   return (
-    <section className="w-full bg-light-gray px-5 py-20 md:px-10 md:py-28">
+    <section className="w-full bg-light-gray px-5 py-10 md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -26,22 +27,18 @@ export default function CareerInsights() {
           </a>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {insightArticles.map((a, index) => {
-            const articleImages = [
-              "/assets/course-office-administration.jpg",
-              "/assets/course-digital-marketing.jpg",
-              "/assets/course-hospitality.jpg",
-              "/assets/floor-plan-detail.jpg",
-            ];
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {insightArticles.map((a) => {
             return (
               <a key={a.slug} href={`/insights/${a.slug}`} className="group flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm border border-black/6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-skill-green/40">
                 <div>
                   <div className="relative mb-4 h-[170px] overflow-hidden rounded-lg bg-charcoal">
-                    <img
-                      src={articleImages[index % articleImages.length]}
+                    <Image
+                      src={a.image}
                       alt={a.title}
-                      className="h-full w-full object-cover object-[64%_36%] transition-transform duration-700 ease-out group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover object-[64%_36%] transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent" />
                   </div>

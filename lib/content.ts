@@ -13,81 +13,325 @@ export const siteConfig = {
   tagline: "LEARN • GROW • SUCCEED",
   email: "skillexcampus@gmail.com",
   phonePlaceholder: "+91 00000 00000",
+  // Single central WhatsApp number — update this once and every
+  // course-specific WhatsApp CTA across the site picks it up.
   whatsappPlaceholder: "https://wa.me/910000000000",
   addressPlaceholder: "Skillex Campus address — placeholder, to be supplied",
 };
 
-/* ---------------- Courses ---------------- */
+/** Builds a wa.me link pre-filled with a course-specific enquiry message,
+ * so learners never have to type the course name themselves. */
+export function whatsappLinkFor(message: string) {
+  return `${siteConfig.whatsappPlaceholder}?text=${encodeURIComponent(message)}`;
+}
+
+/* ----------------------------------------------------------------------
+   Courses — single source of truth.
+   Every course-facing surface (homepage cards, showcase, course pages,
+   career pathways, comparison table, SEO metadata, WhatsApp CTAs and the
+   future AI Career Advisor) reads from this one array. Do not hardcode
+   course names/slugs anywhere else — import from here instead.
+------------------------------------------------------------------------- */
 export const courses = [
   {
+    id: "office-administration-hr",
     n: "01",
-    slug: "office-administration",
-    title: "Office Administration",
+    number: 1,
+    slug: "office-administration-hr",
+    title: "Office Administration & HR",
+    category: "Office Administration & HR",
+    /** Real photography pending — see /ui/CourseImage.tsx fallback. */
     image: "/assets/course-office-administration.jpg",
+    imageAlt: "Office Administration and HR professional training at Skillex",
     short:
-      "Build the organisational, communication and software skills that keep modern workplaces running.",
+      "Build practical workplace skills across office administration, communication, coordination and HR fundamentals.",
     intro:
-      "A practical programme for anyone who wants to run the operational backbone of a modern workplace — scheduling, records, communication and the everyday software that offices depend on.",
+      "A practical career-focused programme designed to develop the administrative, communication and people-management skills needed in modern workplaces.",
+    focus: "Running the administrative and people-support backbone of a modern workplace.",
+    learningStyle: "Hands-on office simulation, documentation drills and HR case practice.",
+    skillTags: ["Office Administration", "HR Fundamentals", "Workplace Communication", "Office Software"],
     keySkills: [
-      "Business communication & correspondence",
-      "Office software & documentation",
-      "Records & workflow management",
-      "Scheduling & coordination",
-      "Professional workplace etiquette",
+      "Office Administration",
+      "HR Fundamentals",
+      "Workplace Communication",
+      "Documentation & Coordination",
+      "Office Software",
+      "Employee Support",
+      "Professional Etiquette",
     ],
     whoShouldJoin: [
       "School or college leavers exploring an office-based career",
-      "Career switchers moving into administrative roles",
-      "Anyone who wants structured, practical office skills",
+      "Career switchers moving into administration or HR support roles",
+      "Anyone who wants structured, practical office and people skills",
     ],
+    careerPaths: [
+      { title: "Office Administrator", tag: "Administration" },
+      { title: "Administrative Assistant", tag: "Operations" },
+      { title: "HR Assistant", tag: "People Support" },
+      { title: "HR Coordinator", tag: "People Support" },
+      { title: "Front Office Executive", tag: "Client Relations" },
+      { title: "Office Coordinator", tag: "Project Support" },
+      { title: "People Operations Assistant", tag: "HR Operations" },
+    ],
+    /** Verbatim from the official Office Administration & HR course PDF
+     * ("What Will You Learn?"). Single-source-of-truth for the premium
+     * curriculum grid and the curriculum breakdown on the course page. */
+    curriculumGroups: [
+      {
+        title: "What You'll Learn",
+        items: [
+          "Office Management & Administration",
+          "MS Word, Excel & PowerPoint",
+          "Professional Email & Communication",
+          "Documentation & Filing",
+          "Data Entry & Record Management",
+          "Scheduling & Appointment Management",
+          "Meeting & Event Coordination",
+          "Customer Service Skills",
+          "Basic Accounting & Billing",
+          "HR & Administrative Support",
+          "Professional Etiquette",
+          "Workplace Communication",
+        ],
+      },
+    ],
+    whatsappMessage:
+      "Hi Skillex, I'm interested in the Office Administration & HR course. I would like to know more about the programme.",
+    keywords: [
+      "office administration",
+      "hr",
+      "human resources",
+      "administrative assistant",
+      "hr coordinator",
+      "office coordinator",
+      "front office",
+      "people operations",
+    ],
+    seo: {
+      title: "Office Administration & HR Course | Skillex",
+      description:
+        "A career-focused programme building practical office administration, communication, coordination and HR fundamentals for modern workplaces.",
+    },
   },
   {
+    id: "business-administration-accounting",
     n: "02",
-    slug: "hospitality",
-    title: "Hospitality",
-    image: "/assets/course-hospitality.jpg",
+    number: 2,
+    slug: "business-administration-accounting",
+    title: "Business Administration & Accounting",
+    category: "Business Administration & Accounting",
+    /** Verbatim from the official course PDF. */
+    duration: "3 Month Career Program",
+    image: "/assets/course-business-administration.jpg",
+    imageAlt: "Business Administration and Accounting training at Skillex",
     short:
-      "Prepare for front-of-house and guest-service careers across hotels, restaurants and events.",
+      "Build practical business operations, office management and accounting skills for today's job market.",
+    /** Verbatim course overview from the official Business Administration
+     * & Accounting course PDF. */
     intro:
-      "A hands-on programme for people who enjoy working with others and want a career in guest-facing hospitality — hotels, restaurants, events and beyond.",
+      "The Business Administration & Accounting course is designed to provide practical knowledge in business operations, office management, accounting, financial documentation, and professional workplace skills. It helps learners understand how businesses function while developing the essential accounting and administrative skills required in today's competitive job market.",
+    focus: "Understanding how businesses operate — from office administration to financial documentation.",
+    learningStyle: "Applied bookkeeping, accounting-software practice and office-administration exercises.",
+    skillTags: ["Business Administration & Management", "Financial Accounting", "Bookkeeping", "GST & Tax Basics"],
     keySkills: [
-      "Guest service & communication",
-      "Front office operations",
-      "Food & beverage service basics",
-      "Grooming & professional presentation",
-      "Handling real-world service situations",
+      "Business Administration & Management",
+      "Financial Accounting",
+      "Bookkeeping",
+      "Tally & Accounting Software",
+      "GST & Tax Basics",
+      "Payroll Management",
+      "Office Administration",
+      "MS Office & Excel",
+      "Financial Documentation",
+      "Business Communication",
+      "Banking & Financial Transactions",
+      "Basic HR & Customer Management",
     ],
+    /** Verbatim "Who Can Join?" from the official course PDF. */
     whoShouldJoin: [
-      "Those who enjoy people-facing, service-oriented work",
-      "Career starters aiming for hotels, restaurants or events",
-      "Anyone wanting a practical route into hospitality",
+      "Plus Two / Higher Secondary Students",
+      "Graduates",
+      "Job Seekers",
+      "Beginners in Accounting",
+      "Entrepreneurs & Business Owners",
+      "Anyone looking to build a career in Administration & Finance",
     ],
+    /** Verbatim "Career Opportunities" from the official course PDF.
+     * Presented on-site as "Potential Career Pathways" — no employment
+     * outcome is implied. */
+    careerPaths: [
+      { title: "Accounts Assistant", tag: "Accounts & Finance" },
+      { title: "Accountant", tag: "Accounts & Finance" },
+      { title: "Office Administrator", tag: "Administration" },
+      { title: "Accounts Executive", tag: "Accounts & Finance" },
+      { title: "Finance Assistant", tag: "Accounts & Finance" },
+      { title: "Administrative Executive", tag: "Administration" },
+      { title: "Billing Executive", tag: "Accounts & Finance" },
+      { title: "Payroll Assistant", tag: "Accounts & Finance" },
+      { title: "Business Support Executive", tag: "Operations" },
+    ],
+    /** Verbatim from the official Business Administration & Accounting
+     * course PDF ("What Will You Learn?"). Single-source-of-truth for the
+     * premium curriculum grid and the curriculum breakdown on the course
+     * page. */
+    curriculumGroups: [
+      {
+        title: "What You'll Learn",
+        items: [
+          "Business Administration & Management",
+          "Financial Accounting",
+          "Bookkeeping",
+          "Tally & Accounting Software",
+          "GST & Tax Basics",
+          "Payroll Management",
+          "Office Administration",
+          "MS Office & Excel",
+          "Financial Documentation",
+          "Business Communication",
+          "Banking & Financial Transactions",
+          "Basic HR & Customer Management",
+        ],
+      },
+    ],
+    /** "Why Choose This Course?" from the official course PDF — Practical
+     * Learning, Industry-Relevant Skills, Career-Focused Training,
+     * Professional Development (corrected from a PDF layout/typo split). */
+    whyChoose: ["Practical Learning", "Industry-Relevant Skills", "Career-Focused Training", "Professional Development"],
+    whatsappMessage:
+      "Hi Skillex, I'm interested in the Business Administration & Accounting course. I would like to know more about the programme.",
+    keywords: [
+      "business administration",
+      "accounting",
+      "bookkeeping",
+      "tally",
+      "gst",
+      "payroll management",
+      "accounts assistant",
+      "billing executive",
+      "financial documentation",
+    ],
+    seo: {
+      title: "Business Administration & Accounting Course | Skillex",
+      description:
+        "A 3 month career program building practical business operations, office management and accounting skills for today's competitive job market.",
+    },
   },
   {
+    id: "digital-marketing",
     n: "03",
+    number: 3,
     slug: "digital-marketing",
     title: "Digital Marketing",
+    category: "Digital Marketing",
     image: "/assets/course-digital-marketing.jpg",
+    imageAlt: "Digital Marketing training at Skillex",
     short:
-      "Learn how brands plan, launch and measure campaigns across today's digital channels.",
+      "Master modern digital marketing with practical tools, AI-assisted workflows and real-world campaign skills.",
     intro:
-      "A practical introduction to how brands are built and grown online today — from content and social to search and performance basics.",
+      "A practical digital marketing programme covering modern marketing channels, content, advertising, analytics and AI-assisted marketing workflows.",
+    focus: "Planning, launching and measuring campaigns across today's digital channels.",
+    learningStyle: "Live campaign practice, analytics reviews and AI-assisted marketing workflows.",
+    skillTags: ["SEO", "Social Media Marketing", "Meta & Google Advertising", "AI Marketing Tools"],
     keySkills: [
-      "Social media strategy & content",
-      "Search & performance marketing basics",
-      "Analytics & campaign measurement",
-      "Content planning & copywriting",
-      "Brand & audience thinking",
+      "Digital Marketing Strategy",
+      "Social Media Marketing",
+      "SEO",
+      "Content Marketing",
+      "Meta Advertising",
+      "Google Advertising",
+      "Analytics",
+      "AI Marketing Tools",
+      "Campaign Planning",
+      "Copywriting",
     ],
     whoShouldJoin: [
       "Anyone curious about how brands grow online",
       "Small-business owners who want to market themselves",
       "Career starters aiming for marketing or social media roles",
     ],
+    careerPaths: [
+      { title: "Digital Marketing Executive", tag: "Campaigns" },
+      { title: "Social Media Executive", tag: "Community" },
+      { title: "SEO Executive", tag: "Organic Growth" },
+      { title: "Performance Marketing Executive", tag: "Performance Ads" },
+      { title: "Content Marketing Executive", tag: "Creative" },
+      { title: "Digital Marketing Coordinator", tag: "Campaigns" },
+    ],
+    /** Verbatim from the official AI-Integrated Digital Marketing course
+     * PDF ("What Will You Learn?" + "AI Integration"). */
+    curriculumGroups: [
+      {
+        title: "Core Learning Areas",
+        items: [
+          "Digital Marketing Fundamentals",
+          "SEO",
+          "Social Media Marketing",
+          "Meta Ads",
+          "Google Ads",
+          "Content Marketing",
+          "Email Marketing",
+          "Analytics",
+        ],
+      },
+      {
+        title: "AI Integration",
+        items: [
+          "AI Content Creation",
+          "AI-powered Social Media",
+          "AI for SEO",
+          "AI Ad Copywriting",
+          "AI Image & Video Creation",
+          "Marketing Automation",
+        ],
+      },
+    ],
+    whatsappMessage:
+      "Hi Skillex, I'm interested in the Digital Marketing course. I would like to know more about the programme.",
+    keywords: [
+      "digital marketing",
+      "seo",
+      "social media marketing",
+      "performance marketing",
+      "content marketing",
+      "meta ads",
+      "google ads",
+      "ai marketing",
+    ],
+    seo: {
+      title: "Digital Marketing Course | Skillex",
+      description:
+        "A practical digital marketing programme covering modern channels, content, advertising, analytics and AI-assisted marketing workflows.",
+    },
   },
 ] as const;
 
 export type Course = (typeof courses)[number];
+
+/** Flattens a course's curriculumGroups into a single ordered list —
+ * used to number items 01, 02, 03... continuously across groups. */
+export function curriculumItemsFor(course: Course) {
+  return course.curriculumGroups.flatMap((g) => g.items);
+}
+
+/** Shared framing line for every career-pathway section — outcomes are
+ * presented as possibilities shaped by the learner, not guarantees. */
+export const careerPathwaysNote =
+  "Potential career pathways may include the roles below. Actual outcomes depend on individual performance, experience and market conditions.";
+
+/* ---------------- Career Opportunities Matrix ----------------
+   Derived from `courses` so career-path data lives in exactly one place
+   (see courses[].careerPaths). Keyed by slug for existing tab-based UI. */
+export const careerMatrix = courses.reduce(
+  (acc, c) => {
+    acc[c.slug] = {
+      category: c.category,
+      subtitle: c.focus,
+      roles: c.careerPaths.map((r) => ({ title: r.title, tag: r.tag })),
+    };
+    return acc;
+  },
+  {} as Record<string, { category: string; subtitle: string; roles: { title: string; tag: string }[] }>
+);
 
 export const courseFAQs = [
   {
@@ -176,13 +420,13 @@ export const whoCanLearn = [
   {
     title: "Job Seekers & Career Starters",
     tag: "Job Ready",
-    desc: "Build professional confidence, strong portfolios, and guaranteed interview readiness.",
+    desc: "Build professional confidence, strong portfolios, and interview readiness.",
     icon: "Briefcase",
   },
   {
     title: "Working Professionals",
     tag: "Growth Track",
-    desc: "Upskill in AI tools, managerial administration, digital marketing, or luxury hospitality.",
+    desc: "Upskill in AI tools, business administration and accounting, or digital marketing.",
     icon: "TrendingUp",
   },
   {
@@ -192,7 +436,7 @@ export const whoCanLearn = [
     icon: "Compass",
   },
   {
-    title: "Entrepreneurs & Solopreneurs",
+    title: "Entrepreneurs & Business Owners",
     tag: "Business Lead",
     desc: "Master operations, digital branding, and client management to run and scale your venture.",
     icon: "Zap",
@@ -204,12 +448,12 @@ export const developedSkills = [
   {
     title: "Professional & Communication Skills",
     desc: "Corporate spoken English, presentation mastery, email correspondence & business etiquette.",
-    metric: "95% Mastery",
+    metric: "Professional Skill",
   },
   {
     title: "Practical Workplace Knowledge",
-    desc: "Real office workflows, live administrative systems, documentation, and compliance.",
-    metric: "100% Hands-on",
+    desc: "Real office workflows, live administrative and accounting systems, documentation, and compliance.",
+    metric: "Workplace Application",
   },
   {
     title: "Technical & Digital Skills",
@@ -243,54 +487,11 @@ export const developedSkills = [
   },
 ];
 
-/* ---------------- Career Opportunities Matrix (from Skillex brochure page 6) ---------------- */
-export const careerMatrix = {
-  "office-administration": {
-    category: "Office Administration",
-    subtitle: "High-demand corporate backbone roles",
-    roles: [
-      { title: "Office Administrator", tag: "Management" },
-      { title: "Administrative Assistant", tag: "Operations" },
-      { title: "Front Office Executive", tag: "Client Relations" },
-      { title: "Receptionist / Executive Concierge", tag: "Guest Relations" },
-      { title: "Office Coordinator", tag: "Project Support" },
-      { title: "Data Entry Executive", tag: "Data & Systems" },
-      { title: "Customer Service Executive", tag: "Client Support" },
-    ],
-  },
-  hospitality: {
-    category: "Hospitality Management",
-    subtitle: "Global luxury service & guest experience careers",
-    roles: [
-      { title: "Front Office Executive", tag: "Guest Relations" },
-      { title: "Guest Relations Executive", tag: "VIP Services" },
-      { title: "Hotel Receptionist", tag: "Front of House" },
-      { title: "Housekeeping Executive", tag: "Operations" },
-      { title: "Food & Beverage Service Staff", tag: "Service" },
-      { title: "Hospitality Coordinator", tag: "Events & Logistics" },
-      { title: "Customer Service Executive", tag: "Client Care" },
-    ],
-  },
-  "digital-marketing": {
-    category: "Digital Marketing",
-    subtitle: "Modern high-growth digital brand careers",
-    roles: [
-      { title: "Digital Marketing Executive", tag: "Campaigns" },
-      { title: "Social Media Executive", tag: "Community" },
-      { title: "SEO Executive", tag: "Organic Growth" },
-      { title: "Content Marketing Executive", tag: "Creative" },
-      { title: "Social Media Manager", tag: "Brand Strategy" },
-      { title: "Digital Advertising Executive", tag: "Performance Ads" },
-      { title: "Content Creator", tag: "Visual & Copy" },
-    ],
-  },
-};
-
 /* ---------------- Essential Add-Ons (Competitor placement & AI era edge) ---------------- */
 export const essentialAddons = [
   {
     title: "Modern AI Era Office Tools",
-    desc: "Harness AI assistants (ChatGPT, Copilot, Notion AI) to automate emails, spreadsheets, data analysis, and presentations 5x faster.",
+    desc: "Harness AI assistants (ChatGPT, Copilot, Notion AI) to automate emails, spreadsheets, data analysis, and presentations more efficiently.",
     badge: "AI Powered",
     icon: "Bot",
   },
@@ -314,7 +515,7 @@ export const essentialAddons = [
   },
   {
     title: "Rigorous Interview Coaching",
-    desc: "One-on-one mock interviews, HR round preparation, video portfolio building, and guaranteed confidence drills.",
+    desc: "One-on-one mock interviews, HR round preparation, video portfolio building, and structured confidence-building drills.",
     badge: "Placement Edge",
     icon: "UserCheck",
   },
@@ -331,27 +532,27 @@ export const hiringSectors = [
   "Corporate MNCs",
   "IT & Software Companies",
   "Private Enterprises",
-  "Hospitals & Healthcare",
+  "Accounting & Finance Firms",
   "HR Consultancies",
-  "Star Hotels & Resorts",
-  "Aviation & Travel Hubs",
+  "Marketing & Advertising Agencies",
   "Banking & Financial Firms",
   "Educational Institutions",
+  "E-commerce & Retail",
   "Logistics & Production Hubs",
 ];
 
 export const placementStats = [
-  { value: "100%", label: "Placement Assistance", detail: "Dedicated career support team" },
+  { value: "1:1", label: "Placement Assistance", detail: "Dedicated career support team" },
   { value: "1000+", label: "Successful Alumni", detail: "Placed across top corporate sectors" },
   { value: "3 Months", label: "Intensive Program", detail: "Hands-on, project-based training" },
-  { value: "10+", label: "Hiring Industry Sectors", detail: "Corporate, IT, Hospitality & more" },
+  { value: "10+", label: "Hiring Industry Sectors", detail: "Corporate, IT, Accounting & more" },
 ];
 
 /* ---------------- Student Stories & Real Placement Wall ---------------- */
 export const studentStories = [
   {
     name: "Fathima Fidha",
-    course: "Office Administration",
+    course: "Office Administration & HR",
     role: "Front Office Executive",
     company: "Aster Healthcare Group",
     quote:
@@ -367,15 +568,15 @@ export const studentStories = [
   },
   {
     name: "Shahana Sherin",
-    course: "Hospitality Management",
-    role: "Guest Relations Coordinator",
-    company: "Grand Hyatt",
+    course: "Business Administration & Accounting",
+    role: "Accounts & Administration Executive",
+    company: "Apex Business Solutions",
     quote:
-      "The hands-on simulation in the front office lab and grooming sessions gave me the poise needed for 5-star international hospitality standards.",
+      "The bookkeeping and business documentation modules gave me practical, day-one confidence with the accounts and admin work I now handle every week.",
   },
   {
     name: "Salmanul Faris",
-    course: "Office Administration",
+    course: "Office Administration & HR",
     role: "Administrative Coordinator",
     company: "Lulu Group International",
     quote:
@@ -387,33 +588,37 @@ export const studentStories = [
 export const insightCategories = [
   "Digital Marketing",
   "Career Guide",
-  "Hospitality",
-  "Office Administration",
+  "Business Administration & Accounting",
+  "Office Administration & HR",
 ];
 
 export const insightArticles = [
   {
     slug: "ai-tools-transforming-modern-office-administration",
-    category: "Office Administration",
+    category: "Office Administration & HR",
     title: "How AI Tools are Transforming Modern Office Administration in 2026",
     excerpt: "Discover the essential AI prompts, automated spreadsheets, and smart scheduling tools that modern executive assistants use.",
+    image: "/assets/course-office-administration.jpg",
   },
   {
     slug: "top-digital-marketing-skills-employers-look-for",
     category: "Digital Marketing",
     title: "The Most In-Demand Digital Marketing Skills Hiring Managers Want",
     excerpt: "From AI-assisted content creation to performance analytics, here is what sets standout marketers apart in today's job market.",
+    image: "/assets/course-digital-marketing.jpg",
   },
   {
-    slug: "careers-in-modern-hospitality-and-guest-relations",
-    category: "Hospitality",
-    title: "Navigating Career Growth in Luxury Hospitality and Guest Experience",
-    excerpt: "An insider guide to front-of-house excellence, VIP guest handling, and career progression across international hotel chains.",
+    slug: "accounting-fundamentals-every-business-administrator-needs",
+    category: "Business Administration & Accounting",
+    title: "Accounting Fundamentals Every Business Administrator Needs",
+    excerpt: "A practical look at the bookkeeping, billing and financial-documentation basics that keep growing businesses organised.",
+    image: "/assets/course-business-administration.jpg",
   },
   {
     slug: "how-to-ace-your-first-corporate-job-interview",
     category: "Career Guide",
     title: "The Ultimate Guide to Acing Your First Corporate Interview",
     excerpt: "Key strategies for confident body language, answering competency questions, and presenting your Skillex portfolio with impact.",
+    image: "/assets/student-stories-hero.jpg",
   },
 ];

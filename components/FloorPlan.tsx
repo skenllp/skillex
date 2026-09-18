@@ -27,9 +27,9 @@ export default function FloorPlan() {
   const active = floorPlanHotspots.find((h) => h.id === activeId)!;
 
   return (
-    <section className="w-full bg-light-gray px-5 py-20 md:px-10 md:py-28">
+    <section className="w-full bg-light-gray px-5 py-10 md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-12 max-w-[560px]">
+        <Reveal className="mb-8 max-w-[560px]">
           <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
             <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
             EXPLORE THE CAMPUS
@@ -63,13 +63,15 @@ export default function FloorPlan() {
                     onClick={() => setActiveId(h.id)}
                     aria-label={h.name}
                     title={h.name}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full text-[10px] font-bold transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2"
+                    className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full text-[10px] font-bold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skill-green"
                     style={{
                       left: `${pos.x}%`,
                       top: `${pos.y}%`,
-                      width: "clamp(20px, 3.2%, 32px)",
-                      height: "clamp(20px, 3.2%, 32px)",
-                      fontSize: "clamp(8px, 1%, 11px)",
+                      // Keep a touch-friendlier minimum (was 20px) while
+                      // still scaling with the image on larger viewports.
+                      width: "clamp(26px, 3.4%, 34px)",
+                      height: "clamp(26px, 3.4%, 34px)",
+                      fontSize: "clamp(9px, 1%, 11px)",
                       backgroundColor: isActive ? "#8CC63F" : "rgba(255,255,255,0.92)",
                       color: isActive ? "#1A1A1A" : "#1A1A1A",
                       boxShadow: isActive

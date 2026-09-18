@@ -10,7 +10,7 @@ import { courses } from "@/lib/content";
 const trustPoints = [
   { text: "Practical Learning", icon: Sparkles },
   { text: "Expert Guidance", icon: Award },
-  { text: "100% Placement Support", icon: ShieldCheck },
+  { text: "Career & Placement Support", icon: ShieldCheck },
 ];
 
 export default function Hero() {
@@ -41,7 +41,7 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden pt-[80px] pb-12 lg:pt-[92px] lg:pb-16 bg-black">
+    <section className="relative flex min-h-[80vh] w-full items-center overflow-hidden pt-[80px] pb-10 lg:pt-[92px] lg:pb-12 bg-black md:min-h-[85vh]">
       {/* 1. Background Video with Parallax & Vivid Color Boost */}
       <div
         className="absolute inset-0 h-[115%] w-full transition-transform duration-[2000ms] ease-out will-change-transform pointer-events-none"
@@ -53,6 +53,9 @@ export default function Hero() {
       >
         <HeroMedia
           videoSrc="/assets/hero-video.mp4"
+          posterSrc="/assets/hero-poster.jpg"
+          mobileVideoSrc="/assets/hero-video-mobile.mp4"
+          mobilePosterSrc="/assets/hero-poster-mobile.jpg"
           className="absolute inset-0 h-full w-full object-cover brightness-[1.12] contrast-[1.05] saturate-[1.1]"
         />
       </div>
@@ -137,8 +140,8 @@ export default function Hero() {
               className="mb-9 max-w-[540px] text-[16px] leading-relaxed text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)] sm:text-[17.5px] md:text-[18px]"
               style={reveal(200)}
             >
-              Industry-focused training in <strong className="text-white font-semibold">Office Administration</strong>,{" "}
-              <strong className="text-white font-semibold">Hospitality</strong>, and{" "}
+              Industry-focused training in <strong className="text-white font-semibold">Office Administration &amp; HR</strong>,{" "}
+              <strong className="text-white font-semibold">Business Administration &amp; Accounting</strong>, and{" "}
               <strong className="text-white font-semibold">Digital Marketing</strong>. Empowering careers with real-world practice, AI-era tools, and dedicated placement support.
             </p>
 
@@ -146,7 +149,7 @@ export default function Hero() {
             <div className="mb-10 flex flex-wrap items-center gap-4" style={reveal(300)}>
               <a
                 href="#courses"
-                className="btn-sweep group inline-flex min-h-[52px] items-center gap-2.5 border border-skill-green bg-skill-green px-8 text-[15px] font-semibold text-charcoal shadow-lg shadow-skill-green/25 transition-transform duration-300 hover:-translate-y-0.5"
+                className="btn-sweep group inline-flex min-h-[52px] items-center gap-2.5 border border-skill-green bg-skill-green px-8 text-[15px] font-semibold text-charcoal shadow-lg shadow-skill-green/25 transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Explore Courses
@@ -159,7 +162,7 @@ export default function Hero() {
 
               <a
                 href="/campus#video"
-                className="btn-sweep btn-sweep-dark group inline-flex min-h-[52px] items-center gap-2.5 border border-white/40 bg-black/35 px-7 text-[15px] font-semibold text-white backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5"
+                className="btn-sweep btn-sweep-dark group inline-flex min-h-[52px] items-center gap-2.5 border border-white/40 bg-black/35 px-7 text-[15px] font-semibold text-white backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <PlayCircle size={18} className="text-skill-green group-hover:text-charcoal transition-colors" />
@@ -167,15 +170,16 @@ export default function Hero() {
                 </span>
               </a>
 
-              {/* Quick Cinematic Mode Button */}
+              {/* Secondary, visually quieter full-screen video toggle —
+                  Watch Campus Video above remains the primary video CTA */}
               <button
                 type="button"
                 onClick={() => setCinematicMode(true)}
-                className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-[13px] font-medium text-white/90 backdrop-blur-md transition-all hover:bg-white/20 hover:border-skill-green/50"
+                className="hidden sm:inline-flex items-center gap-1.5 px-2 py-3 text-[13px] font-medium text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded"
                 title="Watch background video full screen"
               >
-                <Eye size={15} className="text-skill-green" />
-                <span>Full Video View</span>
+                <Eye size={14} className="text-white/50" />
+                <span>Full video view</span>
               </button>
             </div>
 
@@ -276,7 +280,7 @@ export default function Hero() {
               <div className="rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 flex items-center justify-between text-[11.5px] text-white/85">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 size={14} className="text-skill-green shrink-0" />
-                  <span>100% Placement Support</span>
+                  <span>Career &amp; Placement Support</span>
                 </div>
                 <span className="font-semibold text-skill-green">ISO 9001:2015</span>
               </div>

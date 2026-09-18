@@ -1,27 +1,38 @@
-import { ArrowRight, Check, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import CourseImage from "@/ui/CourseImage";
 import EnquiryForm from "@/ui/EnquiryForm";
-import { courseFAQs, studentStories, careerMatrix, type Course } from "@/lib/content";
+import {
+  courseFAQs,
+  studentStories,
+  careerMatrix,
+  careerPathwaysNote,
+  whatsappLinkFor,
+  curriculumItemsFor,
+  type Course,
+} from "@/lib/content";
 
-const quickFacts = [
-  { label: "Duration", value: "3 Months Intensive" },
-  { label: "Format", value: "Practical Lab & Hands-on Simulation" },
-  { label: "Level", value: "Beginner to Career-Ready (10+2 / Degree)" },
-  { label: "Placement", value: "100% Placement Support" },
-];
+const defaultDuration = "3 Months Intensive";
 
 export default function CourseTemplate({ course }: { course: Course }) {
-  const relatedStories = studentStories.filter((s) => s.course.toLowerCase().includes(course.title.toLowerCase().slice(0, 5)));
+  const relatedStories = studentStories.filter((s) => s.course === course.title);
   const stories = relatedStories.length ? relatedStories : studentStories.slice(0, 2);
   const roles = careerMatrix[course.slug as keyof typeof careerMatrix]?.roles || [];
+  const curriculumItems = curriculumItemsFor(course);
+  const duration = "duration" in course && course.duration ? course.duration : defaultDuration;
+  const quickFacts = [
+    { label: "Duration", value: duration },
+    { label: "Format", value: "Practical Lab & Hands-on Simulation" },
+    { label: "Level", value: "Beginner to Career-Ready (10+2 / Degree)" },
+    { label: "Placement", value: "Placement Guidance & Mentoring" },
+  ];
 
   return (
     <main>
       {/* Course hero */}
-      <section className="relative flex min-h-[62vh] w-full items-end overflow-hidden">
+      <section className="relative flex min-h-[68vh] w-full items-end overflow-hidden">
         <CourseImage
           src={course.image}
-          alt={`${course.title} at Skillex`}
+          alt={course.imageAlt}
           variant="showcase"
           className="absolute inset-0 h-full w-full"
           sizes="100vw"
@@ -31,17 +42,34 @@ export default function CourseTemplate({ course }: { course: Course }) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.15) 100%)",
+              "linear-gradient(100deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.2) 100%)",
           }}
         />
         <div className="relative z-10 mx-auto w-full max-w-container px-5 pb-16 pt-[160px] md:px-10">
-          <span className="mb-4 block text-[13px] font-semibold text-skill-green">{course.n}</span>
+          <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green uppercase">
+            <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
+            Professional Program
+          </p>
           <h1 className="max-w-[640px] text-[38px] font-bold leading-tight text-white md:text-[54px]">
             {course.title}
           </h1>
           <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-white/80">
             {course.short}
           </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={`/enquire?course=${course.slug}`}
+              className="inline-flex min-h-[50px] items-center gap-2 bg-skill-green px-7 text-[15px] font-semibold text-charcoal transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+            >
+              Enquire Now <ArrowRight size={16} />
+            </a>
+            <a
+              href="#curriculum"
+              className="inline-flex min-h-[50px] items-center gap-2 border border-white/50 px-7 text-[15px] font-semibold text-white transition-colors duration-300 hover:bg-white hover:text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+            >
+              Explore Curriculum ↓
+            </a>
+          </div>
         </div>
       </section>
 
@@ -74,43 +102,68 @@ export default function CourseTemplate({ course }: { course: Course }) {
         <div className="mx-auto grid max-w-container grid-cols-1 gap-14 md:grid-cols-2">
           <div>
             <h2 className="mb-6 text-[26px] font-bold text-charcoal md:text-[30px]">Why this course?</h2>
-            <p className="max-w-[440px] text-[15px] leading-relaxed text-medium-gray">
-              {course.title} is built for people who want practical, job-relevant skills —
-              not just theory. Real placement outcomes and industry specifics will be added
-              here once supplied.
-            </p>
+            {"whyChoose" in course && course.whyChoose ? (
+              <ul className="flex max-w-[440px] flex-col gap-3">
+                {course.whyChoose.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-[15px] leading-relaxed text-medium-gray">
+                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-skill-green" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="max-w-[440px] text-[15px] leading-relaxed text-medium-gray">
+                {course.title} is built for people who want practical, job-relevant skills —
+                not just theory. Real placement outcomes and industry specifics will be added
+                here once supplied.
+              </p>
+            )}
           </div>
           <div>
             <h2 className="mb-6 text-[26px] font-bold text-charcoal md:text-[30px]">What you&apos;ll learn</h2>
-            <ul className="flex flex-col gap-3.5">
-              {course.keySkills.map((skill) => (
-                <li key={skill} className="flex items-start gap-3 text-[14.5px] text-charcoal">
-                  <Check size={16} className="mt-0.5 shrink-0 text-skill-green" />
-                  {skill}
-                </li>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {curriculumItems.map((skill, i) => (
+                <div
+                  key={skill}
+                  className="group flex items-start gap-3 rounded-lg border border-black/8 bg-white/70 px-4 py-3.5 transition-all duration-300 hover:-translate-y-[2px] hover:border-skill-green/40 hover:bg-white"
+                >
+                  <span className="mt-0.5 shrink-0 text-[12px] font-bold tabular-nums text-skill-green">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[14px] leading-snug text-charcoal">{skill}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Curriculum */}
-      <section className="w-full bg-white px-5 py-20 md:px-10 md:py-24">
+      <section id="curriculum" className="w-full bg-white px-5 py-20 md:px-10 md:py-24 scroll-mt-24">
         <div className="mx-auto max-w-container">
           <h2 className="mb-10 text-[26px] font-bold text-charcoal md:text-[30px]">Curriculum</h2>
-          <div className="flex flex-col divide-y divide-black/10 border-y border-black/10">
-            {course.keySkills.map((skill, i) => (
-              <div key={skill} className="flex items-center gap-6 py-5">
-                <span className="w-8 shrink-0 text-[13px] font-semibold text-skill-green">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-[15px] text-charcoal">{skill}</span>
-                <span className="ml-auto hidden text-[13px] text-medium-gray sm:block">
-                  Module detail — placeholder
-                </span>
+          {course.curriculumGroups.map((group, gi) => {
+            const offset = course.curriculumGroups.slice(0, gi).reduce((n, g) => n + g.items.length, 0);
+            return (
+              <div key={group.title} className={gi > 0 ? "mt-10" : ""}>
+                {course.curriculumGroups.length > 1 && (
+                  <h3 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-medium-gray">
+                    {group.title}
+                  </h3>
+                )}
+                <div className="flex flex-col divide-y divide-black/10 border-y border-black/10">
+                  {group.items.map((skill, i) => (
+                    <div key={skill} className="flex items-center gap-6 py-5">
+                      <span className="w-8 shrink-0 text-[13px] font-semibold text-skill-green">
+                        {String(offset + i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-[15px] text-charcoal">{skill}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
@@ -136,7 +189,7 @@ export default function CourseTemplate({ course }: { course: Course }) {
               Learn through real workplace tasks, live software applications, and simulated professional scenarios designed to build genuine job-ready confidence.
             </p>
             <div className="flex items-center gap-3 text-[13.5px] font-semibold text-charcoal">
-              <CheckCircle2 size={18} className="text-skill-green" /> 100% Practical &amp; Portfolio-Driven
+              <CheckCircle2 size={18} className="text-skill-green" /> Practical, Portfolio-Driven Training
             </div>
           </div>
         </div>
@@ -147,9 +200,10 @@ export default function CourseTemplate({ course }: { course: Course }) {
         <div className="mx-auto grid max-w-container grid-cols-1 gap-14 md:grid-cols-2">
           <div>
             <span className="text-[12px] font-bold uppercase tracking-wider text-skill-green mb-2 block">
-              Placement Roles
+              Where This Can Lead
             </span>
-            <h2 className="mb-6 text-[26px] font-bold text-charcoal md:text-[30px]">Career Opportunities</h2>
+            <h2 className="mb-3 text-[26px] font-bold text-charcoal md:text-[30px]">Potential Career Pathways</h2>
+            <p className="mb-6 max-w-[480px] text-[13.5px] leading-relaxed text-medium-gray">{careerPathwaysNote}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {roles.map((role) => (
                 <div
@@ -228,6 +282,15 @@ export default function CourseTemplate({ course }: { course: Course }) {
               Send an enquiry and the Skillex team will get back to you with the details
               you need.
             </p>
+            <a
+              href={whatsappLinkFor(course.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex min-h-[48px] items-center gap-2.5 rounded border border-white/20 px-6 text-[14.5px] font-semibold text-white transition-colors duration-300 hover:border-[#25D366] hover:text-[#25D366] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+            >
+              <MessageCircle size={17} />
+              Chat on WhatsApp
+            </a>
           </div>
           <div className="max-w-[480px]">
             <EnquiryForm dark defaultCourse={course.slug} />

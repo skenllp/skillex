@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 /**
  * SKILLEX DESIGN SYSTEM
@@ -38,7 +39,18 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Touch devices don't have a real ":hover" — without this, tapping a
+    // card/button can leave its hover state (glow, lift, spotlight) stuck
+    // on screen until the next unrelated tap. Scoping hover/group-hover to
+    // devices that report a genuine fine-pointer hover capability fixes
+    // that across every component at once, instead of patching each one.
+    plugin(function ({ addVariant }) {
+      addVariant("hover", "@media (hover: hover) and (pointer: fine) { &:hover }");
+      addVariant("group-hover", "@media (hover: hover) and (pointer: fine) { :merge(.group):hover & }");
+      addVariant("peer-hover", "@media (hover: hover) and (pointer: fine) { :merge(.peer):hover ~ & }");
+    }),
+  ],
 };
 
 export default config;

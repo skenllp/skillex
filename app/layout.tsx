@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Industry-focused training in Office Administration, Hospitality and Digital Marketing. Build skills. Build your future with Skillex.",
+    "Industry-focused training in Office Administration & HR, Business Administration & Accounting, and Digital Marketing. Build skills. Build your future with Skillex.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Skillex — Learn. Grow. Succeed.",
     description:
-      "Industry-focused training in Office Administration, Hospitality and Digital Marketing.",
+      "Industry-focused training in Office Administration & HR, Business Administration & Accounting, and Digital Marketing.",
     type: "website",
     siteName: "Skillex",
   },

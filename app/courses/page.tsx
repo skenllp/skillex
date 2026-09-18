@@ -4,12 +4,13 @@ import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import CourseImage from "@/ui/CourseImage";
 import ChromaGrid from "@/ui/ChromaGrid";
 import ChromaSpotlight from "@/ui/ChromaSpotlight";
+import CourseComparison from "@/components/CourseComparison";
 import { courses } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Courses — Skillex",
   description:
-    "Explore Skillex's career-oriented programs in Office Administration, Hospitality and Digital Marketing.",
+    "Explore Skillex's career-oriented programs in Office Administration & HR, Business Administration & Accounting, and Digital Marketing.",
 };
 
 export default function CoursesPage() {
@@ -54,12 +55,12 @@ export default function CoursesPage() {
           </h1>
 
           <p className="mt-4 max-w-[580px] text-[16px] leading-relaxed text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)] sm:text-[17.5px]">
-            Hands-on modules designed in collaboration with corporate recruiters across Office Administration, Hospitality, and Digital Marketing.
+            Hands-on modules designed in collaboration with corporate recruiters across Office Administration & HR, Business Administration & Accounting, and Digital Marketing.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-4 text-[13px] text-white/80">
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 size={15} className="text-skill-green" /> 100% Placement Support
+              <CheckCircle2 size={15} className="text-skill-green" /> Career &amp; Placement Support
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 size={15} className="text-skill-green" /> Live Software Drills
@@ -93,7 +94,7 @@ export default function CoursesPage() {
                   <p className="max-w-[480px] text-[14.5px] leading-relaxed text-medium-gray">{c.short}</p>
                 </div>
                 <div className="relative hidden h-[125px] overflow-hidden rounded-xl md:block shadow-sm">
-                  <CourseImage src={c.image} alt={`${c.title} at Skillex`} className="h-full w-full object-cover" sizes="220px" />
+                  <CourseImage src={c.image} alt={c.imageAlt} className="h-full w-full object-cover" sizes="220px" />
                 </div>
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-light-gray text-charcoal transition-all duration-300 group-hover:bg-skill-green group-hover:text-charcoal group-hover:translate-x-1">
                   <ArrowRight size={18} />
@@ -103,6 +104,9 @@ export default function CoursesPage() {
           ))}
         </div>
       </section>
+
+      {/* 3. Which path is right for you? */}
+      <CourseComparison />
     </main>
   );
 }

@@ -1,8 +1,12 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import PhotoPlaceholder from "@/ui/PhotoPlaceholder";
 
 interface CourseImageProps {
-  src: string;
+  /** Path to the photo, or null when dedicated photography hasn't been
+   * supplied yet — renders a clearly-labelled placeholder instead of a
+   * mismatched or generic stock image. */
+  src: string | null;
   alt: string;
   className?: string;
   /** "crop" hides the left text panel baked into the source poster and shows
@@ -28,6 +32,14 @@ export default function CourseImage({
   sizes = "(max-width: 768px) 100vw, 33vw",
   priority = false,
 }: CourseImageProps) {
+  if (!src) {
+    return (
+      <div className={`relative h-full w-full overflow-hidden ${className}`}>
+        <PhotoPlaceholder label="Course photography pending" className="h-full w-full" dark />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative h-full w-full overflow-hidden ${className}`}>
       <Image

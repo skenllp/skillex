@@ -12,12 +12,12 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function WhySkillex() {
   return (
-    <section className="relative w-full bg-charcoal px-5 py-20 md:px-10 md:py-28 overflow-hidden">
+    <section className="relative w-full bg-charcoal px-5 py-10 md:px-10 md:py-16 overflow-hidden">
       {/* Interactive Cursor-Tracking Chroma Grid */}
       <ChromaGrid baseOpacity={0.06} gridSize={46} interactiveRadius={340} />
 
       <div className="relative z-10 mx-auto max-w-container">
-        <div className="mb-16 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -34,13 +34,13 @@ export default function WhySkillex() {
         </div>
 
         {/* 4 Interactive Chroma Cards with Cursor Border Glow */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-9">
           {principles.map((p, i) => {
             const Icon = iconMap[p.icon];
             return (
               <ChromaSpotlight
                 key={p.title}
-                className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-skill-green/50 hover:bg-white/[0.08]"
+                className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:border-skill-green/50 hover:bg-white/[0.08]"
                 borderGlowColor="rgba(140, 198, 63, 0.95)"
                 radius={280}
               >
@@ -62,9 +62,9 @@ export default function WhySkillex() {
           })}
         </div>
 
-        {/* 100% Placement Support Ecosystem Banner with Chroma Spotlight */}
+        {/* Placement Support Ecosystem Banner with Chroma Spotlight */}
         <ChromaSpotlight
-          className="rounded-2xl border border-white/15 bg-gradient-to-r from-white/10 via-white/5 to-white/[0.02] p-7 sm:p-9 backdrop-blur-md transition-all hover:border-skill-green/50"
+          className="rounded-2xl border border-white/15 bg-gradient-to-r from-white/10 via-white/5 to-white/[0.02] p-6 sm:p-7 backdrop-blur-md transition-all hover:border-skill-green/50"
           borderGlowColor="rgba(0, 242, 254, 0.85)"
           radius={400}
         >
@@ -73,7 +73,7 @@ export default function WhySkillex() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="h-2 w-2 rounded-full bg-skill-green animate-pulse" />
                 <span className="text-[11.5px] font-bold uppercase tracking-widest text-skill-green">
-                  Placement Guarantee & Guidance
+                  Placement Support &amp; Guidance
                 </span>
               </div>
               <h3 className="text-[22px] font-bold text-white sm:text-[24px]">

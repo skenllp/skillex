@@ -5,9 +5,9 @@ import { courses } from "@/lib/content";
 
 export default function CourseShowcase() {
   return (
-    <section className="w-full bg-white px-5 py-20 md:px-10 md:py-28">
+    <section className="w-full bg-white px-5 py-10 md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-16 max-w-[560px]">
+        <Reveal className="mb-9 max-w-[560px]">
           <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
             <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
             FIND YOUR DIRECTION
@@ -30,7 +30,7 @@ export default function CourseShowcase() {
                   <div className="relative h-[320px] overflow-hidden md:h-[440px]">
                     <CourseImage
                       src={c.image}
-                      alt={`${c.title} at Skillex`}
+                      alt={c.imageAlt}
                       variant="showcase"
                       className="h-full w-full"
                       sizes="(max-width: 768px) 100vw, 50vw"

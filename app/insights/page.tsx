@@ -7,7 +7,7 @@ import ChromaSpotlight from "@/ui/ChromaSpotlight";
 
 export const metadata: Metadata = {
   title: "Insights — Skillex",
-  description: "Career guides and industry insights across Digital Marketing, Hospitality and Office Administration.",
+  description: "Career guides and industry insights across Digital Marketing, Business Administration & Accounting, and Office Administration & HR.",
 };
 
 export default function InsightsPage() {
@@ -82,13 +82,7 @@ export default function InsightsPage() {
                 <div>
                   <div className="relative mb-5 h-[190px] overflow-hidden rounded-xl bg-light-gray">
                     <Image
-                      src={
-                        a.slug.includes("digital-marketing")
-                          ? "/assets/course-digital-marketing.jpg"
-                          : a.slug.includes("hospitality")
-                          ? "/assets/course-hospitality.jpg"
-                          : "/assets/course-office-administration.jpg"
-                      }
+                      src={a.image}
                       alt={a.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

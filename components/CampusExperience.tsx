@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import PhotoPlaceholder from "@/ui/PhotoPlaceholder";
 import Reveal from "@/ui/Reveal";
@@ -5,9 +6,9 @@ import { campusHighlights } from "@/lib/content";
 
 export default function CampusExperience() {
   return (
-    <section className="w-full bg-white px-5 py-20 md:px-10 md:py-28">
+    <section className="w-full bg-white px-5 py-10 md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+        <Reveal className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
           <div>
             <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -42,7 +43,7 @@ export default function CampusExperience() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
             
-            <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
+            <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-7">
               <span className="self-start rounded-full bg-black/40 border border-white/20 px-3.5 py-1 text-[11.5px] font-semibold text-white backdrop-blur-md">
                 Live Campus Preview
               </span>
@@ -74,17 +75,19 @@ export default function CampusExperience() {
                 "/assets/course-digital-marketing.jpg",
                 "/assets/course-office-administration.jpg",
                 "/assets/floor-plan-detail.jpg",
-                "/assets/course-hospitality.jpg",
+                "/assets/floor-plan-branded.jpg",
               ];
               return (
                 <div
                   key={h.title}
                   className="group relative h-[140px] overflow-hidden rounded-xl bg-charcoal lg:h-[105px]"
                 >
-                  <img
+                  <Image
                     src={highlightImages[index % highlightImages.length]}
                     alt={h.title}
-                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 300px"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent p-3 sm:p-4 flex flex-col justify-end">
                     <span className="text-[13px] font-bold leading-tight text-white group-hover:text-skill-green transition-colors">

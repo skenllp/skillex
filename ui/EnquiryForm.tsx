@@ -96,7 +96,8 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
       <button
         type="submit"
         disabled={submitting}
-        className="mt-2 inline-flex min-h-[50px] items-center justify-center gap-2 bg-skill-green px-7 text-[15px] font-semibold text-charcoal transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-70"
+        aria-live="polite"
+        className="mt-2 inline-flex min-h-[50px] items-center justify-center gap-2 bg-skill-green px-7 text-[15px] font-semibold text-charcoal transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-skill-green"
       >
         {submitting ? "Sending..." : "Submit Enquiry"} <ArrowRight size={16} />
       </button>

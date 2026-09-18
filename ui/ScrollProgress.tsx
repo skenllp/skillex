@@ -40,11 +40,13 @@ export default function ScrollProgress() {
         />
       </div>
 
-      {/* Floating Scroll-to-Top Button */}
+      {/* Floating Scroll-to-Top Button — stacked above the WhatsApp button
+          (bottom-6, h-14/56px) with clear spacing so the two floating
+          controls never overlap or fight for the same tap target. */}
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className={`fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-charcoal text-white shadow-xl border border-white/15 transition-all duration-300 hover:bg-skill-green hover:text-charcoal hover:-translate-y-1 ${
+        className={`fixed bottom-24 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-charcoal text-white shadow-xl border border-white/15 transition-all duration-300 hover:bg-skill-green hover:text-charcoal hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green focus-visible:ring-offset-2 ${
           showTopBtn
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4 pointer-events-none"

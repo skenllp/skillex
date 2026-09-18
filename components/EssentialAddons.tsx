@@ -26,13 +26,13 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function EssentialAddons() {
   return (
-    <section className="relative w-full bg-[#141414] border-y border-white/5 px-5 py-20 text-white md:px-10 md:py-28 overflow-hidden">
+    <section className="relative w-full bg-[#141414] border-y border-white/5 px-5 py-10 text-white md:px-10 md:py-16 overflow-hidden">
       {/* Modern Interactive Chroma Grid Background */}
       <ChromaGrid baseOpacity={0.06} gridSize={44} interactiveRadius={360} />
 
       <div className="relative z-10 mx-auto max-w-container">
         {/* Header */}
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <Reveal direction="up">
             <div className="inline-flex items-center gap-2 rounded-full border border-skill-green/40 bg-skill-green/10 px-3.5 py-1 mb-3">
               <Sparkles size={14} className="text-skill-green" />
@@ -59,7 +59,7 @@ export default function EssentialAddons() {
         </div>
 
         {/* 6 Essential Add-ons Grid with Dynamic Cursor Border Glow */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-9">
           {essentialAddons.map((item, index) => {
             const Icon = iconMap[item.icon] || Bot;
             return (
@@ -68,7 +68,7 @@ export default function EssentialAddons() {
                   className="rounded-2xl border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-skill-green/50 hover:shadow-2xl hover:shadow-black/40 h-full"
                   borderGlowColor="rgba(140, 198, 63, 0.65)"
                 >
-                  <div className="flex h-full flex-col justify-between p-6 sm:p-7">
+                  <div className="flex h-full flex-col justify-between p-5 sm:p-6">
                     <div>
                       <div className="mb-5 flex items-center justify-between">
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-skill-green/15 text-skill-green border border-skill-green/30 group-hover:bg-skill-green group-hover:text-charcoal transition-all duration-300">
@@ -100,7 +100,7 @@ export default function EssentialAddons() {
 
         {/* Key Placement & Credibility Stats Banner */}
         <ChromaSpotlight
-          className="rounded-2xl border border-skill-green/35 bg-gradient-to-r from-skill-green/15 via-skill-green/5 to-transparent p-7 sm:p-10 backdrop-blur-lg"
+          className="rounded-2xl border border-skill-green/35 bg-gradient-to-r from-skill-green/15 via-skill-green/5 to-transparent p-6 sm:p-8 backdrop-blur-lg"
           borderGlowColor="rgba(140, 198, 63, 0.7)"
         >
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">

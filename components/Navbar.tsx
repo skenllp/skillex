@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/content";
@@ -12,6 +12,8 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -46,13 +48,31 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile drawer is open
+  // Lock body scroll when mobile drawer is open, move focus into the panel,
+  // let Escape close it, and return focus to the toggle button on close so
+  // keyboard users never lose their place.
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "";
+    if (drawerOpen) {
+      closeButtonRef.current?.focus();
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setDrawerOpen(false);
+      };
+      document.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+        document.body.style.overflow = "";
+      };
+    }
     return () => {
       document.body.style.overflow = "";
     };
   }, [drawerOpen]);
+
+  const closeDrawer = () => {
+    setDrawerOpen(false);
+    menuButtonRef.current?.focus();
+  };
 
   // All pages have rich dark hero imagery, so when at top, use crisp white branding
   const dark = !scrolled;
@@ -125,9 +145,13 @@ export default function Navbar() {
               </span>
             </a>
             <button
+              ref={menuButtonRef}
               onClick={() => setDrawerOpen(true)}
-              className="p-2 lg:hidden drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
+              className="p-2 lg:hidden drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green focus-visible:ring-offset-2 rounded"
               aria-label="Open menu"
+              aria-haspopup="dialog"
+              aria-expanded={drawerOpen}
+              aria-controls="mobile-nav-drawer"
             >
               <Menu size={26} color={dark ? "#FFFFFF" : "#1A1A1A"} />
             </button>
@@ -152,9 +176,10 @@ export default function Navbar() {
       >
         <div
           className="absolute inset-0 bg-black/65 backdrop-blur-sm"
-          onClick={() => setDrawerOpen(false)}
+          onClick={closeDrawer}
         />
         <div
+          id="mobile-nav-drawer"
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
@@ -164,7 +189,12 @@ export default function Navbar() {
         >
           <div className="flex h-[76px] items-center justify-between px-6 border-b border-white/10">
             <Logo onDark height={26} />
-            <button onClick={() => setDrawerOpen(false)} aria-label="Close menu">
+            <button
+              ref={closeButtonRef}
+              onClick={closeDrawer}
+              aria-label="Close menu"
+              className="p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+            >
               <X size={26} color="#FFFFFF" />
             </button>
           </div>
@@ -175,8 +205,9 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setDrawerOpen(false)}
-                  className={`border-b border-white/5 py-3.5 text-[18px] transition-colors ${
+                  onClick={closeDrawer}
+                  tabIndex={drawerOpen ? 0 : -1}
+                  className={`border-b border-white/5 py-3.5 text-[18px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green ${
                     isActive ? "font-bold text-skill-green" : "font-medium text-white/90 hover:text-skill-green"
                   }`}
                 >
@@ -188,7 +219,9 @@ export default function Navbar() {
           <div className="mb-10 mt-auto px-6">
             <a
               href="/enquire"
-              className="flex w-full items-center justify-center gap-2 bg-skill-green py-3.5 text-[15px] font-semibold text-charcoal shadow-lg shadow-skill-green/20"
+              tabIndex={drawerOpen ? 0 : -1}
+              onClick={closeDrawer}
+              className="flex w-full items-center justify-center gap-2 bg-skill-green py-3.5 text-[15px] font-semibold text-charcoal shadow-lg shadow-skill-green/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
             >
               Enquire Now <ArrowRight size={16} />
             </a>

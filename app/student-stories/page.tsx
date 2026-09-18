@@ -57,7 +57,7 @@ export default function StudentStoriesPage() {
 
           <div className="mt-6 flex flex-wrap items-center gap-5 text-[13px] text-white/80">
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 size={15} className="text-skill-green" /> 100% Placement Support
+              <CheckCircle2 size={15} className="text-skill-green" /> Career &amp; Placement Support
             </span>
             <span className="flex items-center gap-1.5">
               <TrendingUp size={15} className="text-skill-green" /> 500+ Hiring Partners

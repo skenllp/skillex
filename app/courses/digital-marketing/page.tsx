@@ -5,8 +5,8 @@ import { courses } from "@/lib/content";
 const course = courses.find((c) => c.slug === "digital-marketing")!;
 
 export const metadata: Metadata = {
-  title: `${course.title} — Skillex`,
-  description: course.short,
+  title: course.seo.title,
+  description: course.seo.description,
 };
 
 export default function DigitalMarketingPage() {

@@ -20,13 +20,13 @@ const detailedSteps = [
   {
     step: "04",
     title: "Placement & Growth",
-    desc: "Mock HR interviews, corporate referrals, and guaranteed placement assistance across 10+ sectors.",
+    desc: "Mock HR interviews, corporate referrals, and dedicated placement assistance across 10+ sectors.",
   },
 ];
 
 export default function CareerJourney() {
   return (
-    <section className="w-full bg-[#111111] px-5 py-20 text-white md:px-10 md:py-28 border-y border-white/5">
+    <section className="w-full bg-[#111111] px-5 py-10 text-white md:px-10 md:py-16 border-y border-white/5">
       <div className="mx-auto max-w-container text-center">
         <Reveal direction="up">
           <div className="inline-flex items-center gap-2 rounded-full border border-skill-green/40 bg-skill-green/10 px-3.5 py-1 mb-4">
@@ -38,7 +38,7 @@ export default function CareerJourney() {
           <h2 className="text-[32px] font-bold text-white sm:text-[38px] md:text-[44px] mb-4">
             From Learner to Corporate Professional
           </h2>
-          <p className="text-[15.5px] text-white/65 max-w-[560px] mx-auto mb-16">
+          <p className="text-[15.5px] text-white/65 max-w-[560px] mx-auto mb-9">
             A structured, 4-phase transformation engineered to take you from day one to your first day on the job.
           </p>
         </Reveal>
@@ -46,7 +46,7 @@ export default function CareerJourney() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 text-left">
           {detailedSteps.map((s, i) => (
             <Reveal key={s.step} delay={i * 80} direction="up">
-              <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-skill-green/50 hover:bg-white/10">
+              <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-skill-green/50 hover:bg-white/10">
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-skill-green/20 text-[15px] font-black text-skill-green border border-skill-green/40">

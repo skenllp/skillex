@@ -27,10 +27,10 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function WhoCanLearn() {
   return (
-    <section className="w-full bg-[#FAFAFA] border-y border-black/5 px-5 py-20 md:px-10 md:py-28">
+    <section className="w-full bg-[#FAFAFA] border-y border-black/5 px-5 py-10 md:px-10 md:py-16">
       <div className="mx-auto max-w-container">
         {/* Section Header */}
-        <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="mb-3 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green uppercase">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -62,11 +62,11 @@ export default function WhoCanLearn() {
             return (
               <Reveal key={item.title} delay={index * 50} direction="up">
                 <ChromaSpotlight
-                  className="h-full rounded-xl border border-black/8 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-black/5"
+                  className="h-full rounded-xl border border-black/8 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5"
                   borderGlowColor="rgba(140, 198, 63, 0.95)"
                   radius={280}
                 >
-                  <div className="flex h-full flex-col justify-between p-6">
+                  <div className="flex h-full flex-col justify-between p-5">
                     <div>
                       <div className="mb-4 flex items-center justify-between">
                         <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-skill-green/10 text-charcoal transition-colors duration-300 group-hover:bg-skill-green group-hover:text-charcoal">
@@ -93,7 +93,7 @@ export default function WhoCanLearn() {
           {/* Quick Contact CTA Tile with Chroma Border Glow */}
           <Reveal delay={whoCanLearn.length * 50} direction="scale">
             <ChromaSpotlight
-              className="h-full rounded-xl border border-dashed border-charcoal/25 bg-white/70 p-6 backdrop-blur-sm"
+              className="h-full rounded-xl border border-dashed border-charcoal/25 bg-white/70 p-5 backdrop-blur-sm"
               borderGlowColor="rgba(0, 242, 254, 0.85)"
               radius={280}
             >

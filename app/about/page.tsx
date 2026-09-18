@@ -51,7 +51,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="mt-4 max-w-[620px] text-[16px] leading-relaxed text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)] sm:text-[17.5px]">
-            We bridge the gap between academic education and industry requirements. Through immersive training in Office Administration, Hospitality, and Digital Marketing, we empower students to thrive in modern workplaces.
+            We bridge the gap between academic education and industry requirements. Through immersive training in Office Administration &amp; HR, Business Administration &amp; Accounting, and Digital Marketing, we empower students to thrive in modern workplaces.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-5 text-[13px] text-white/80">
@@ -62,7 +62,7 @@ export default function AboutPage() {
               <Target size={15} className="text-skill-green" /> Practical Learning
             </span>
             <span className="flex items-center gap-1.5">
-              <Users size={15} className="text-skill-green" /> 100% Placement Focus
+              <Users size={15} className="text-skill-green" /> Career-Focused Training
             </span>
           </div>
         </div>
