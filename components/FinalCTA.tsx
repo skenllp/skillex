@@ -4,7 +4,7 @@ import Reveal from "@/ui/Reveal";
 
 export default function FinalCTA() {
   return (
-    <section className="relative w-full overflow-hidden px-5 py-10 md:px-10 md:py-16">
+    <section className="relative w-full overflow-hidden px-5 py-10 md:px-10 md:py-14">
       <Image
         src="/assets/course-office-administration.jpg"
         alt="Skillex campus"
@@ -21,7 +21,7 @@ export default function FinalCTA() {
       />
       <div className="relative z-10 mx-auto max-w-container">
         <Reveal direction="up" className="max-w-[560px]">
-          <h2 className="mb-6 text-[36px] font-bold leading-[1.1] text-white md:text-[52px]">
+          <h2 className="mb-4 text-[30px] font-bold leading-[1.1] text-white md:text-[42px]">
             Your next step
             <br />
             starts here.

@@ -6,10 +6,10 @@ import Reveal from "@/ui/Reveal";
 
 export default function SkillsDeveloped() {
   return (
-    <section className="w-full bg-white px-5 py-10 md:px-10 md:py-16">
+    <section className="w-full bg-white px-5 py-8 md:px-10 md:py-12">
       <div className="mx-auto max-w-container">
         {/* Section Header */}
-        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mb-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <Reveal direction="up">
             <p className="mb-3 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green uppercase">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -31,12 +31,12 @@ export default function SkillsDeveloped() {
         </div>
 
         {/* 8 Competencies Grid with Interactive Progress & Accents */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
           {developedSkills.map((skill, index) => (
             <Reveal key={skill.title} delay={index * 50} direction="up">
-              <div className="group relative flex h-full flex-col justify-between rounded-xl border border-black/8 bg-light-gray/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-skill-green/50 hover:bg-white hover:shadow-xl hover:shadow-black/5">
+              <div className="group relative flex h-full flex-col justify-between rounded-xl border border-black/8 bg-light-gray/40 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-skill-green/50 hover:bg-white hover:shadow-xl hover:shadow-black/5">
                 <div>
-                  <div className="mb-4 flex items-center justify-between">
+                  <div className="mb-3 flex items-center justify-between">
                     <span className="text-[13px] font-bold text-skill-green">
                       0{index + 1}
                     </span>
@@ -52,7 +52,7 @@ export default function SkillsDeveloped() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-black/5 flex items-center justify-between text-[12px] font-medium text-charcoal/70 group-hover:text-skill-green transition-colors">
+                <div className="mt-4 pt-3 border-t border-black/5 flex items-center justify-between text-[12px] font-medium text-charcoal/70 group-hover:text-skill-green transition-colors">
                   <span>Core Competency</span>
                   <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </div>

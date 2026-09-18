@@ -1,46 +1,37 @@
+import Image from "next/image";
+
 interface HeroMediaProps {
   /** Path to the cinematic desktop (landscape) hero video — e.g. /assets/hero-video.mp4 */
   videoSrc?: string;
   /** Poster / fallback image for the desktop video */
   posterSrc?: string;
-  /** Path to the dedicated portrait (9:16) hero video used below the md breakpoint. */
-  mobileVideoSrc?: string;
-  /** Poster / fallback image for the mobile video. */
+  /** Static portrait background image for mobile devices (< 768px). */
+  mobileImageSrc?: string;
+  /** Backward compatibility fallback for mobile image */
   mobilePosterSrc?: string;
   className?: string;
 }
 
 /**
- * Responsive hero video — desktop vs. mobile source, and the
- * prefers-reduced-motion poster fallback, are all resolved with plain CSS
- * (Tailwind's `md:` and `motion-reduce:`/`motion-safe:` variants) rather
- * than JavaScript viewport detection. Both `<video>` elements are present
- * in the initial server-rendered HTML with the correct responsive classes
- * already applied, so there's no client-side flash of the wrong video and
- * no hydration-dependent state:
- *
- * - Below `md`: the mobile <video> is `block`, the desktop one is `hidden`.
- * - `md` and up: the reverse.
- * - `prefers-reduced-motion: reduce`: both videos are hidden and a poster
- *   image (matching the same breakpoint split) is shown instead.
- *
- * Browsers don't run the autoplay/decode pipeline for `display:none`
- * elements, so the hidden video at any given breakpoint is not actively
- * decoded/played — only its small `preload="metadata"` fetch may occur.
+ * Responsive Hero Media:
+ * - Desktop (>= 768px / md): Autoplays the cinematic landscape desktop video.
+ * - Mobile (< 768px): Strictly displays the high-resolution static portrait image.
+ *   The desktop video is completely excluded on mobile viewports via CSS and source media
+ *   queries to ensure zero unnecessary bandwidth or decode overhead.
  */
 export default function HeroMedia({
-  videoSrc,
-  posterSrc,
-  mobileVideoSrc,
+  videoSrc = "/assets/hero-video.mp4",
+  posterSrc = "/assets/hero-poster.jpg",
+  mobileImageSrc,
   mobilePosterSrc,
   className = "",
 }: HeroMediaProps) {
-  const effectiveMobileVideo = mobileVideoSrc ?? videoSrc;
-  const effectiveMobilePoster = mobilePosterSrc ?? posterSrc;
+  const effectiveMobileImage =
+    mobileImageSrc ?? mobilePosterSrc ?? "/assets/hero-mobile.jpg";
 
   return (
     <>
-      {/* Motion-safe: real video, breakpoint-switched purely via CSS */}
+      {/* Desktop (md and up): Real video with media query to prevent mobile preload */}
       {videoSrc && (
         <video
           className={`hidden md:block motion-reduce:!hidden object-cover ${className}`}
@@ -52,39 +43,32 @@ export default function HeroMedia({
           poster={posterSrc}
           aria-hidden="true"
         >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
-      )}
-      {effectiveMobileVideo && (
-        <video
-          className={`block md:hidden motion-reduce:!hidden object-cover ${className}`}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={effectiveMobilePoster}
-          aria-hidden="true"
-        >
-          <source src={effectiveMobileVideo} type="video/mp4" />
+          <source media="(min-width: 768px)" src={videoSrc} type="video/mp4" />
         </video>
       )}
 
-      {/* prefers-reduced-motion: still poster images, same breakpoint split */}
+      {/* Desktop prefers-reduced-motion fallback: still landscape poster */}
       {posterSrc && (
         <img
           src={posterSrc}
           alt=""
+          aria-hidden="true"
           className={`hidden motion-reduce:md:block object-cover ${className}`}
         />
       )}
-      {effectiveMobilePoster && (
-        <img
-          src={effectiveMobilePoster}
-          alt=""
-          className={`hidden motion-reduce:block motion-reduce:md:hidden object-cover ${className}`}
+
+      {/* Mobile (< md): High-priority static portrait image */}
+      <div className="block md:hidden absolute inset-0 h-full w-full pointer-events-none">
+        <Image
+          src={effectiveMobileImage}
+          alt="Skillex Campus"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 1px"
+          className={`object-cover object-center ${className}`}
         />
-      )}
+      </div>
     </>
   );
 }
+

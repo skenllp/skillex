@@ -5,9 +5,9 @@ import { courses } from "@/lib/content";
 
 export default function CourseShowcase() {
   return (
-    <section className="w-full bg-white px-5 py-10 md:px-10 md:py-16">
+    <section className="w-full bg-white px-5 py-8 md:px-10 md:py-12">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-9 max-w-[560px]">
+        <Reveal className="mb-6 max-w-[560px]">
           <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
             <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
             FIND YOUR DIRECTION
@@ -17,7 +17,7 @@ export default function CourseShowcase() {
           </h2>
         </Reveal>
 
-        <div className="flex flex-col gap-20 md:gap-28">
+        <div className="flex flex-col gap-8 md:gap-14">
           {courses.map((c, i) => {
             const imageFirst = i % 2 === 0;
             return (
@@ -27,7 +27,7 @@ export default function CourseShowcase() {
                 className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16"
               >
                 <div className={imageFirst ? "md:order-1" : "md:order-2"}>
-                  <div className="relative h-[320px] overflow-hidden md:h-[440px]">
+                  <div className="relative h-[220px] overflow-hidden sm:h-[260px] md:h-[320px]">
                     <CourseImage
                       src={c.image}
                       alt={c.imageAlt}

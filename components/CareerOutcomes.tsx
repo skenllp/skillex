@@ -12,10 +12,10 @@ export default function CareerOutcomes() {
   const currentData = careerMatrix[activeTab];
 
   return (
-    <section className="w-full bg-charcoal px-5 py-10 text-white md:px-10 md:py-16">
+    <section className="w-full bg-charcoal px-5 py-8 text-white md:px-10 md:py-12">
       <div className="mx-auto max-w-container">
         {/* Section Header */}
-        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mb-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <Reveal direction="up">
             <p className="mb-3 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green uppercase">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -41,7 +41,7 @@ export default function CareerOutcomes() {
         </div>
 
         {/* Tab Controls */}
-        <div className="mb-8 flex flex-wrap gap-3 border-b border-white/10 pb-4">
+        <div className="mb-5 flex flex-wrap gap-2 border-b border-white/10 pb-3">
           {(Object.keys(careerMatrix) as TabKey[]).map((key) => {
             const item = careerMatrix[key];
             const isActive = activeTab === key;
@@ -49,7 +49,7 @@ export default function CareerOutcomes() {
               <button
                 key={key}
                 onClick={() => setActiveTab(key)}
-                className={`flex items-center gap-2.5 rounded-lg px-5 py-3 text-[14.5px] font-semibold transition-all duration-300 ${
+                className={`flex items-center gap-2 rounded-lg px-3.5 py-2 text-[13.5px] font-semibold transition-all duration-300 ${
                   isActive
                     ? "bg-skill-green text-charcoal shadow-lg shadow-skill-green/20"
                     : "bg-white/5 text-white/80 hover:bg-white/10 hover:text-white"
@@ -70,7 +70,7 @@ export default function CareerOutcomes() {
         </div>
 
         {/* Tab Content: Roles Grid */}
-        <div className="mb-12 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md">
+        <div className="mb-8 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 backdrop-blur-md">
           <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
               <span className="text-[12px] font-bold uppercase tracking-wider text-skill-green">
@@ -86,11 +86,11 @@ export default function CareerOutcomes() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {currentData.roles.map((role) => (
               <div
                 key={role.title}
-                className="group relative flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-skill-green/50 hover:bg-white/10 hover:translate-x-1"
+                className="group relative flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:border-skill-green/50 hover:bg-white/10 hover:translate-x-1"
               >
                 <div>
                   <h4 className="text-[15px] font-semibold text-white group-hover:text-skill-green transition-colors">
@@ -108,7 +108,7 @@ export default function CareerOutcomes() {
         </div>
 
         {/* Industry Hiring Sectors (Competitor feature inspired) */}
-        <div className="rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-7">
+        <div className="rounded-2xl border border-white/10 bg-black/40 p-4 sm:p-5">
           <div className="mb-5 flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-skill-green/20 text-skill-green">
               <Building2 size={18} />

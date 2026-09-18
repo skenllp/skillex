@@ -6,9 +6,9 @@ import { insightArticles } from "@/lib/content";
 
 export default function CareerInsights() {
   return (
-    <section className="w-full bg-light-gray px-5 py-10 md:px-10 md:py-16">
+    <section className="w-full bg-light-gray px-5 py-8 md:px-10 md:py-12">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -32,7 +32,7 @@ export default function CareerInsights() {
             return (
               <a key={a.slug} href={`/insights/${a.slug}`} className="group flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm border border-black/6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-skill-green/40">
                 <div>
-                  <div className="relative mb-4 h-[170px] overflow-hidden rounded-lg bg-charcoal">
+                  <div className="relative mb-3 h-[140px] overflow-hidden rounded-lg bg-charcoal">
                     <Image
                       src={a.image}
                       alt={a.title}

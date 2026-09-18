@@ -6,9 +6,9 @@ import { campusHighlights } from "@/lib/content";
 
 export default function CampusExperience() {
   return (
-    <section className="w-full bg-white px-5 py-10 md:px-10 md:py-16">
+    <section className="w-full bg-white px-5 py-8 md:px-10 md:py-12">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
+        <Reveal className="mb-6 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_360px] lg:items-end">
           <div>
             <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
               <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
@@ -32,7 +32,7 @@ export default function CampusExperience() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_300px]">
           {/* Main Video Experience Preview */}
-          <div className="group relative h-[360px] overflow-hidden rounded-2xl md:h-[460px] bg-charcoal">
+          <div className="group relative h-[260px] overflow-hidden rounded-2xl sm:h-[320px] md:h-[380px] bg-charcoal">
             <video
               src="/assets/hero-video.mp4"
               autoPlay
@@ -80,7 +80,7 @@ export default function CampusExperience() {
               return (
                 <div
                   key={h.title}
-                  className="group relative h-[140px] overflow-hidden rounded-xl bg-charcoal lg:h-[105px]"
+                  className="group relative h-[120px] overflow-hidden rounded-xl bg-charcoal lg:h-[88px]"
                 >
                   <Image
                     src={highlightImages[index % highlightImages.length]}

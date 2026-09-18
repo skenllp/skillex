@@ -27,9 +27,9 @@ export default function FloorPlan() {
   const active = floorPlanHotspots.find((h) => h.id === activeId)!;
 
   return (
-    <section className="w-full bg-light-gray px-5 py-10 md:px-10 md:py-16">
+    <section className="w-full bg-light-gray px-5 py-8 md:px-10 md:py-12">
       <div className="mx-auto max-w-container">
-        <Reveal className="mb-8 max-w-[560px]">
+        <Reveal className="mb-6 max-w-[560px]">
           <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
             <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
             EXPLORE THE CAMPUS
@@ -42,7 +42,7 @@ export default function FloorPlan() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
           {/* On narrow screens the plan scrolls horizontally instead of
               squashing — it keeps its real proportions and stays legible. */}
           <div className="w-full overflow-x-auto bg-white [scrollbar-width:thin]">
