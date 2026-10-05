@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { courses } from "@/lib/content";
+import { courses, siteConfig } from "@/lib/content";
 
 interface EnquiryFormProps {
   dark?: boolean;
@@ -10,21 +10,49 @@ interface EnquiryFormProps {
 }
 
 /**
- * NOTE: This form is UI-only. Wire `handleSubmit` up to your form
- * backend / API route / CRM of choice before going live — it currently
- * just redirects to /thank-you.
+ * Sends each enquiry by email to siteConfig.email (skillexcampus@gmail.com)
+ * through FormSubmit's AJAX endpoint. The very first submission triggers a
+ * one-time activation email from FormSubmit to that inbox — click the
+ * confirm link in it, and every later enquiry arrives normally.
  */
 export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryFormProps) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting) return;
+    setError("");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const courseTitle = courses.find((c) => c.slug === data.get("course"))?.title ?? "Not selected";
+
     setSubmitting(true);
-    // TODO: replace with a real submission (API route / form service / CRM)
-    setTimeout(() => {
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${siteConfig.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          phone: data.get("phone"),
+          email: data.get("email"),
+          course: courseTitle,
+          message: data.get("message") || "(none)",
+          page: window.location.href,
+          _subject: `New Skillex enquiry: ${courseTitle}`,
+          _template: "table",
+          _captcha: "false",
+          _honey: data.get("_honey") || "",
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || json.success === "false" || json.success === false) throw new Error("failed");
       router.push("/thank-you");
-    }, 400);
+    } catch {
+      setError(`Sorry, we couldn't send your enquiry. Please try again, or email ${siteConfig.email} or WhatsApp us.`);
+      setSubmitting(false);
+    }
   };
 
   const labelClass = `mb-1.5 block text-[15px] font-medium ${dark ? "text-white/80" : "text-navy"}`;
@@ -36,6 +64,7 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
+      <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
         <div>
           <label htmlFor="name" className={labelClass}>
@@ -91,6 +120,12 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
           className={`${inputClass} sm:min-h-[70px]`}
         />
       </div>
+
+      {error && (
+        <p role="alert" className={`text-[15px] ${dark ? "text-red-300" : "text-red-600"}`}>
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"

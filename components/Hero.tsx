@@ -41,6 +41,7 @@ export default function Hero() {
           alt="Students learning together at a laptop"
           fill
           priority
+          unoptimized
           sizes="(max-width: 768px) 100vw, 58vw"
           className="object-contain object-bottom md:object-right-bottom"
         />
