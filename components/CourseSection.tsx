@@ -1,96 +1,113 @@
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Calculator, Megaphone, Users, Sparkles, Clock } from "lucide-react";
 import { courses } from "@/lib/content";
-import CourseImage from "@/ui/CourseImage";
-import ChromaSpotlight from "@/ui/ChromaSpotlight";
+import Reveal from "@/ui/Reveal";
+import ImageSlot from "@/ui/ImageSlot";
 
-export default function CourseSection() {
+const icons: Record<string, typeof Calculator> = {
+  "business-administration-accounting": Calculator,
+  "office-administration-hr": Users,
+  "digital-marketing": Megaphone,
+};
+
+export default function CourseSection({ hideHeading = false }: { hideHeading?: boolean }) {
   return (
-    <section id="courses" className="w-full bg-white px-5 py-8 md:px-10 md:py-12">
-      <div className="mx-auto max-w-container">
-        <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="mb-2 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
-              <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
-              CHOOSE YOUR PATH
-            </p>
-            <h2 className="max-w-[560px] text-[30px] font-bold leading-tight text-charcoal md:text-[38px]">
-              Explore our career-oriented programs
+    <section id="courses" className="section-y bg-white">
+      <div className="container-x">
+        {!hideHeading && (
+          <Reveal className="max-w-[640px]">
+            <div className="mb-3 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-lime-dark">
+              <span className="h-1.5 w-6 rounded-full bg-lime" />
+              <span>Career-Focused Programs</span>
+            </div>
+            <h2 className="text-[34px] font-extrabold leading-tight tracking-tight text-navy sm:text-[42px] md:text-[48px]">
+              Find the Course for You
             </h2>
-            <p className="mt-2 max-w-[460px] text-[15px] text-medium-gray">
-              Practical training, real-world skills, a brighter future.
+            <p className="mt-4 text-[18px] leading-relaxed text-grey">
+              Practical, structured programs designed to turn learning into in-demand workplace skills.
             </p>
-          </div>
-          <a
-            href="/courses"
-            className="group inline-flex items-center gap-2 text-[14px] font-semibold text-charcoal hover:text-skill-green transition-colors"
-          >
-            View All Courses
-            <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-        </div>
+          </Reveal>
+        )}
 
-        {/* 3 Course Cards with Dynamic Cursor Border Glow */}
-        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3">
-          {courses.map((c) => (
-            <ChromaSpotlight
-              key={c.slug}
-              className="h-full rounded-2xl border border-black/8 bg-white p-3.5 sm:p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-skill-green/10"
-              borderGlowColor="rgba(140, 198, 63, 0.95)"
-              glowColor="rgba(140, 198, 63, 0.04)"
-              radius={340}
-            >
-              <div className="flex h-full flex-col justify-between">
-                <div>
-                  <div className="relative mb-3 h-[180px] sm:h-[195px] w-full overflow-hidden rounded-xl bg-light-gray">
-                    <CourseImage
+        <div className={`${hideHeading ? "" : "mt-12 md:mt-14 "}grid gap-6 md:grid-cols-3`}>
+          {courses.map((c, i) => {
+            const Icon = icons[c.slug] ?? Calculator;
+            const duration = "duration" in c ? c.duration : null;
+
+            return (
+              <Reveal key={c.slug} delay={i * 80} className="h-full">
+                <Link
+                  href={`/courses/${c.slug}`}
+                  className="group flex h-full flex-col justify-between rounded-card border border-line bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:border-lime hover:shadow-lg md:p-8"
+                >
+                  <div>
+                    {/* Optional Prepared Image Slot - collapses gracefully if image asset is not available */}
+                    <ImageSlot
                       src={c.image}
-                      alt={c.imageAlt}
-                      className="h-full w-full"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      alt={c.title}
+                      label="Course Image"
+                      fallbackMode="hide"
+                      aspectRatio="aspect-[16/10]"
+                      className="mb-6 w-full rounded-2xl"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                    <span className="absolute left-3.5 top-3.5 rounded-md bg-white/95 px-2.5 py-0.5 text-[12.5px] font-bold text-charcoal shadow-sm backdrop-blur-sm">
-                      {c.n}
+
+                    {/* Card Top Meta */}
+                    <div className="flex items-center justify-between border-b border-line/70 pb-4">
+                      <span className="inline-flex items-center gap-1.5 text-[14px] font-extrabold tracking-wider text-lime-dark">
+                        <span className="h-2 w-2 rounded-full bg-lime" />
+                        {c.n}
+                      </span>
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-offwhite text-navy transition-colors group-hover:bg-lime/20">
+                        <Icon size={18} strokeWidth={1.8} />
+                      </span>
+                    </div>
+
+                    {/* Program Duration */}
+                    {duration && (
+                      <div className="mt-5 flex items-center gap-1.5 text-[13px] font-semibold text-grey">
+                        <Clock size={14} className="text-lime-dark" />
+                        <span>{duration}</span>
+                      </div>
+                    )}
+
+                    {/* Course Title */}
+                    <h3 className="mt-2 text-[22px] font-bold leading-snug text-navy transition-colors group-hover:text-navy sm:text-[24px]">
+                      {c.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="mt-3 text-[15.5px] leading-relaxed text-grey">
+                      {c.short}
+                    </p>
+
+                    {/* Key Skills Pills */}
+                    {c.skillTags && (
+                      <div className="mt-5 flex flex-wrap gap-1.5">
+                        {c.skillTags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-md border border-line/80 bg-offwhite px-2.5 py-1 text-[12px] font-medium text-navy/80"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Card Bottom CTA */}
+                  <div className="mt-8 flex items-center justify-between border-t border-line/70 pt-5">
+                    <span className="text-[15px] font-bold text-navy transition-colors group-hover:text-navy">
+                      View Course Details
+                    </span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-offwhite text-navy transition-all duration-200 group-hover:translate-x-1 group-hover:bg-lime group-hover:text-navy">
+                      <ArrowRight size={16} />
                     </span>
                   </div>
-
-                  <span className="mb-1.5 block text-[11px] font-bold uppercase tracking-wider text-skill-green">
-                    {c.category}
-                  </span>
-                  <h3 className="mb-2 text-[19px] font-bold leading-snug text-charcoal transition-colors">
-                    {c.title}
-                  </h3>
-                  <p className="mb-3 text-[14px] leading-relaxed text-medium-gray">
-                    {c.short}
-                  </p>
-
-                  <div className="mb-3.5 flex flex-wrap gap-1.5">
-                    {c.skillTags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-black/10 bg-light-gray/60 px-2.5 py-0.5 text-[11px] font-medium text-charcoal transition-colors duration-300 group-hover:border-skill-green/40"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="border-t border-black/6 pt-3">
-                  <a
-                    href={`/courses/${c.slug}`}
-                    className="group/cta inline-flex items-center gap-2 rounded text-[14px] font-semibold text-charcoal transition-colors hover:text-skill-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skill-green focus-visible:ring-offset-2"
-                  >
-                    Explore Course
-                    <ArrowRight
-                      size={15}
-                      className="text-skill-green transition-transform duration-300 group-hover/cta:translate-x-1.5"
-                    />
-                  </a>
-                </div>
-              </div>
-            </ChromaSpotlight>
-          ))}
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

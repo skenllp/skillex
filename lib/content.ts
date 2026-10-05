@@ -3,14 +3,12 @@ export const navLinks = [
   { label: "Courses", href: "/courses" },
   { label: "Campus", href: "/campus" },
   { label: "About", href: "/about" },
-  { label: "Student Stories", href: "/student-stories" },
-  { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const siteConfig = {
   name: "Skillex",
-  tagline: "LEARN • GROW • SUCCEED",
+  tagline: "Learn Skills. Build Your Career.",
   email: "skillexcampus@gmail.com",
   phonePlaceholder: "+91 00000 00000",
   // Single central WhatsApp number — update this once and every
@@ -34,98 +32,16 @@ export function whatsappLinkFor(message: string) {
 ------------------------------------------------------------------------- */
 export const courses = [
   {
-    id: "office-administration-hr",
+    id: "business-administration-accounting",
     n: "01",
     number: 1,
-    slug: "office-administration-hr",
-    title: "Office Administration & HR",
-    category: "Office Administration & HR",
-    /** Real photography pending — see /ui/CourseImage.tsx fallback. */
-    image: "/assets/course-office-administration.jpg",
-    imageAlt: "Office Administration and HR professional training at Skillex",
-    short:
-      "Build practical workplace skills across office administration, communication, coordination and HR fundamentals.",
-    intro:
-      "A practical career-focused programme designed to develop the administrative, communication and people-management skills needed in modern workplaces.",
-    focus: "Running the administrative and people-support backbone of a modern workplace.",
-    learningStyle: "Hands-on office simulation, documentation drills and HR case practice.",
-    skillTags: ["Office Administration", "HR Fundamentals", "Workplace Communication", "Office Software"],
-    keySkills: [
-      "Office Administration",
-      "HR Fundamentals",
-      "Workplace Communication",
-      "Documentation & Coordination",
-      "Office Software",
-      "Employee Support",
-      "Professional Etiquette",
-    ],
-    whoShouldJoin: [
-      "School or college leavers exploring an office-based career",
-      "Career switchers moving into administration or HR support roles",
-      "Anyone who wants structured, practical office and people skills",
-    ],
-    careerPaths: [
-      { title: "Office Administrator", tag: "Administration" },
-      { title: "Administrative Assistant", tag: "Operations" },
-      { title: "HR Assistant", tag: "People Support" },
-      { title: "HR Coordinator", tag: "People Support" },
-      { title: "Front Office Executive", tag: "Client Relations" },
-      { title: "Office Coordinator", tag: "Project Support" },
-      { title: "People Operations Assistant", tag: "HR Operations" },
-    ],
-    /** Verbatim from the official Office Administration & HR course PDF
-     * ("What Will You Learn?"). Single-source-of-truth for the premium
-     * curriculum grid and the curriculum breakdown on the course page. */
-    curriculumGroups: [
-      {
-        title: "What You'll Learn",
-        items: [
-          "Office Management & Administration",
-          "MS Word, Excel & PowerPoint",
-          "Professional Email & Communication",
-          "Documentation & Filing",
-          "Data Entry & Record Management",
-          "Scheduling & Appointment Management",
-          "Meeting & Event Coordination",
-          "Customer Service Skills",
-          "Basic Accounting & Billing",
-          "HR & Administrative Support",
-          "Professional Etiquette",
-          "Workplace Communication",
-        ],
-      },
-    ],
-    whatsappMessage:
-      "Hi Skillex, I'm interested in the Office Administration & HR course. I would like to know more about the programme.",
-    keywords: [
-      "office administration",
-      "hr",
-      "human resources",
-      "administrative assistant",
-      "hr coordinator",
-      "office coordinator",
-      "front office",
-      "people operations",
-    ],
-    seo: {
-      title: "Office Administration & HR Course | Skillex",
-      description:
-        "A career-focused programme building practical office administration, communication, coordination and HR fundamentals for modern workplaces.",
-    },
-  },
-  {
-    id: "business-administration-accounting",
-    n: "02",
-    number: 2,
     slug: "business-administration-accounting",
-    title: "Business Administration & Accounting",
-    category: "Business Administration & Accounting",
-    /** Verbatim from the official course PDF. */
+    title: "Office Administration & Accounting",
+    category: "Office Administration & Accounting",
     duration: "3 Month Career Program",
-    image: "/assets/course-business-administration.jpg",
-    imageAlt: "Business Administration and Accounting training at Skillex",
-    short:
-      "Build practical business operations, office management and accounting skills for today's job market.",
+    image: "/images/course-accounting.webp",
+    imageAlt: "Office Administration & Accounting training at Skillex",
+    short: "Build practical office, accounting and business administration skills.",
     /** Verbatim course overview from the official Business Administration
      * & Accounting course PDF. */
     intro:
@@ -198,7 +114,7 @@ export const courses = [
      * Professional Development (corrected from a PDF layout/typo split). */
     whyChoose: ["Practical Learning", "Industry-Relevant Skills", "Career-Focused Training", "Professional Development"],
     whatsappMessage:
-      "Hi Skillex, I'm interested in the Business Administration & Accounting course. I would like to know more about the programme.",
+      "Hi Skillex, I'm interested in the Office Administration & Accounting course. I would like to know more about the programme.",
     keywords: [
       "business administration",
       "accounting",
@@ -211,9 +127,85 @@ export const courses = [
       "financial documentation",
     ],
     seo: {
-      title: "Business Administration & Accounting Course | Skillex",
+      title: "Office Administration & Accounting Course | Skillex",
       description:
         "A 3 month career program building practical business operations, office management and accounting skills for today's competitive job market.",
+    },
+  },
+  {
+    id: "office-administration-hr",
+    n: "02",
+    number: 2,
+    slug: "office-administration-hr",
+    title: "Sales Management & HR",
+    category: "Sales Management & HR",
+    duration: "3 Month Career Program",
+    image: "/images/course-sales-hr.webp",
+    imageAlt: "Sales Management and HR training at Skillex",
+    short: "Learn sales, people management and modern HR practices.",
+    intro:
+      "A practical career-focused programme designed to develop the administrative, communication and people-management skills needed in modern workplaces.",
+    focus: "Running the administrative and people-support backbone of a modern workplace.",
+    learningStyle: "Hands-on office simulation, documentation drills and HR case practice.",
+    skillTags: ["Office Administration", "HR Fundamentals", "Workplace Communication", "Office Software"],
+    keySkills: [
+      "Office Administration",
+      "HR Fundamentals",
+      "Workplace Communication",
+      "Documentation & Coordination",
+      "Office Software",
+      "Employee Support",
+      "Professional Etiquette",
+    ],
+    whoShouldJoin: [
+      "School or college leavers exploring an office-based career",
+      "Career switchers moving into administration or HR support roles",
+      "Anyone who wants structured, practical office and people skills",
+    ],
+    careerPaths: [
+      { title: "Office Administrator", tag: "Administration" },
+      { title: "Administrative Assistant", tag: "Operations" },
+      { title: "HR Assistant", tag: "People Support" },
+      { title: "HR Coordinator", tag: "People Support" },
+      { title: "Front Office Executive", tag: "Client Relations" },
+      { title: "Office Coordinator", tag: "Project Support" },
+      { title: "People Operations Assistant", tag: "HR Operations" },
+    ],
+    curriculumGroups: [
+      {
+        title: "What You'll Learn",
+        items: [
+          "Office Management & Administration",
+          "MS Word, Excel & PowerPoint",
+          "Professional Email & Communication",
+          "Documentation & Filing",
+          "Data Entry & Record Management",
+          "Scheduling & Appointment Management",
+          "Meeting & Event Coordination",
+          "Customer Service Skills",
+          "Basic Accounting & Billing",
+          "HR & Administrative Support",
+          "Professional Etiquette",
+          "Workplace Communication",
+        ],
+      },
+    ],
+    whatsappMessage:
+      "Hi Skillex, I'm interested in the Sales Management & HR course. I would like to know more about the programme.",
+    keywords: [
+      "office administration",
+      "hr",
+      "human resources",
+      "administrative assistant",
+      "hr coordinator",
+      "office coordinator",
+      "front office",
+      "people operations",
+    ],
+    seo: {
+      title: "Sales Management & HR Course | Skillex",
+      description:
+        "A career-focused programme building practical office administration, communication, coordination and HR fundamentals for modern workplaces.",
     },
   },
   {
@@ -221,12 +213,12 @@ export const courses = [
     n: "03",
     number: 3,
     slug: "digital-marketing",
-    title: "Digital Marketing",
-    category: "Digital Marketing",
-    image: "/assets/course-digital-marketing.jpg",
-    imageAlt: "Digital Marketing training at Skillex",
-    short:
-      "Master modern digital marketing with practical tools, AI-assisted workflows and real-world campaign skills.",
+    title: "AI-Integrated Digital Marketing",
+    category: "AI-Integrated Digital Marketing",
+    duration: "3 Month Career Program",
+    image: "/images/course-digital-marketing.webp",
+    imageAlt: "AI-Integrated Digital Marketing training at Skillex",
+    short: "Learn digital marketing with today's AI-powered tools and workflows.",
     intro:
       "A practical digital marketing programme covering modern marketing channels, content, advertising, analytics and AI-assisted marketing workflows.",
     focus: "Planning, launching and measuring campaigns across today's digital channels.",
@@ -286,7 +278,7 @@ export const courses = [
       },
     ],
     whatsappMessage:
-      "Hi Skillex, I'm interested in the Digital Marketing course. I would like to know more about the programme.",
+      "Hi Skillex, I'm interested in the AI-Integrated Digital Marketing course. I would like to know more about the programme.",
     keywords: [
       "digital marketing",
       "seo",
@@ -298,7 +290,7 @@ export const courses = [
       "ai marketing",
     ],
     seo: {
-      title: "Digital Marketing Course | Skillex",
+      title: "AI-Integrated Digital Marketing Course | Skillex",
       description:
         "A practical digital marketing programme covering modern channels, content, advertising, analytics and AI-assisted marketing workflows.",
     },
@@ -350,26 +342,10 @@ export const courseFAQs = [
 
 /* ---------------- Why Skillex ---------------- */
 export const principles = [
-  {
-    icon: "BookOpen",
-    title: "Practical Learning",
-    desc: "Training built around real tasks, not just theory.",
-  },
-  {
-    icon: "Target",
-    title: "Industry-Relevant Skills",
-    desc: "Curriculum shaped by what employers actually look for.",
-  },
-  {
-    icon: "Users",
-    title: "Expert Guidance",
-    desc: "Learn with structured mentorship and support.",
-  },
-  {
-    icon: "TrendingUp",
-    title: "Career Readiness",
-    desc: "Leave with the confidence to step into your next role.",
-  },
+  { icon: "BookOpen", title: "Practical Learning", desc: "Learn by doing, not just by listening." },
+  { icon: "Target", title: "Industry-Relevant Skills", desc: "Build skills aligned with today's workplace." },
+  { icon: "Compass", title: "Career Guidance", desc: "Get support preparing for your next career step." },
+  { icon: "Users", title: "Experienced Mentors", desc: "Learn with practical guidance from experienced trainers." },
 ] as const;
 
 /* ---------------- Campus / floor plan ---------------- */
@@ -395,7 +371,11 @@ export const floorPlanHotspots = [
 ] as const;
 
 /* ---------------- Career Journey ---------------- */
-export const journeySteps = ["Learn", "Practice", "Grow", "Become Career Ready"];
+export const journeySteps = [
+  { title: "Choose Your Course", desc: "Pick the program that fits your goal." },
+  { title: "Learn Through Practice", desc: "Build skills with hands-on training." },
+  { title: "Get Career Ready", desc: "Prepare for your next step with guidance." },
+];
 
 /* ---------------- Who Can Learn (from Skillex brochure page 5) ---------------- */
 export const whoCanLearn = [
@@ -622,3 +602,11 @@ export const insightArticles = [
     image: "/assets/student-stories-hero.jpg",
   },
 ];
+
+
+/* ---------------- Testimonials ----------------
+   Only genuine, verified student testimonials may go here (name, course,
+   2–3 sentence quote). While this array is empty the homepage
+   "Student Experiences" section stays hidden. The earlier `studentStories`
+   entries above are unverified placeholders and are NOT displayed. */
+export const testimonials: { name: string; course: string; quote: string }[] = [];

@@ -27,17 +27,13 @@ export default function FloorPlan() {
   const active = floorPlanHotspots.find((h) => h.id === activeId)!;
 
   return (
-    <section className="w-full bg-light-gray px-5 py-8 md:px-10 md:py-12">
-      <div className="mx-auto max-w-container">
+    <section className="w-full bg-offwhite py-16 md:py-24">
+      <div className="container-x">
         <Reveal className="mb-6 max-w-[560px]">
-          <p className="mb-4 flex items-center gap-2 text-[12px] font-semibold tracking-[0.2em] text-skill-green">
-            <span className="inline-block h-[2px] w-[18px] bg-skill-green" />
-            EXPLORE THE CAMPUS
-          </p>
-          <h2 className="text-[32px] font-bold leading-tight text-charcoal md:text-[42px]">
+          <h2 className="text-[30px] font-extrabold tracking-tight text-navy md:text-[40px]">
             Our learning spaces
           </h2>
-          <p className="mt-4 text-[15.5px] leading-relaxed text-medium-gray">
+          <p className="mt-4 text-[17px] leading-relaxed text-grey">
             The real Skillex floor plan — tap a number to explore each space.
           </p>
         </Reveal>
@@ -45,7 +41,7 @@ export default function FloorPlan() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
           {/* On narrow screens the plan scrolls horizontally instead of
               squashing — it keeps its real proportions and stays legible. */}
-          <div className="w-full overflow-x-auto bg-white [scrollbar-width:thin]">
+          <div className="w-full overflow-x-auto rounded-card bg-white [scrollbar-width:thin]">
             <div className="relative aspect-[1536/1024] w-full min-w-[640px] lg:min-w-0">
               <Image
                 src="/assets/floor-plan-branded.jpg"
@@ -72,10 +68,10 @@ export default function FloorPlan() {
                       width: "clamp(26px, 3.4%, 34px)",
                       height: "clamp(26px, 3.4%, 34px)",
                       fontSize: "clamp(9px, 1%, 11px)",
-                      backgroundColor: isActive ? "#8CC63F" : "rgba(255,255,255,0.92)",
-                      color: isActive ? "#1A1A1A" : "#1A1A1A",
+                      backgroundColor: isActive ? "#A7C82D" : "rgba(255,255,255,0.92)",
+                      color: isActive ? "#0D0E2B" : "#0D0E2B",
                       boxShadow: isActive
-                        ? "0 0 0 3px rgba(140,198,63,0.45), 0 2px 6px rgba(0,0,0,0.25)"
+                        ? "0 0 0 3px rgba(167,200,45,0.45), 0 2px 6px rgba(0,0,0,0.25)"
                         : "0 2px 6px rgba(0,0,0,0.3)",
                       animationDelay: `${h.id * 90}ms`,
                     }}
@@ -107,7 +103,7 @@ export default function FloorPlan() {
                   >
                     <span
                       className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold text-white"
-                      style={{ backgroundColor: h.id === activeId ? "#8CC63F" : "#6D6D6D" }}
+                      style={{ backgroundColor: h.id === activeId ? "#A7C82D" : "#63666F" }}
                     >
                       {h.id}
                     </span>

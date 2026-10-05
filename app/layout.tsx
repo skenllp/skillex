@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ScrollProgress from "@/ui/ScrollProgress";
 import "./globals.css";
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -20,18 +19,18 @@ const BASE_URL = "https://www.skillexcampus.example";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Skillex — Learn. Grow. Succeed.",
+    default: "Skillex — Learn Skills. Build Your Career.",
     template: "%s",
   },
   description:
-    "Industry-focused training in Office Administration & HR, Business Administration & Accounting, and Digital Marketing. Build skills. Build your future with Skillex.",
+    "Practical, career-focused programs in Office Administration & Accounting, Sales Management & HR, and AI-Integrated Digital Marketing.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Skillex — Learn. Grow. Succeed.",
+    title: "Skillex — Learn Skills. Build Your Career.",
     description:
-      "Industry-focused training in Office Administration & HR, Business Administration & Accounting, and Digital Marketing.",
+      "Practical, career-focused programs designed to turn learning into real-world skills.",
     type: "website",
     siteName: "Skillex",
   },
@@ -47,11 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
-        <ScrollProgress />
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-lime focus:px-5 focus:py-3 focus:font-semibold focus:text-navy">Skip to content</a>
         <Navbar />
-        {children}
+        <div id="main">{children}</div>
         <Footer />
         <WhatsAppButton />
       </body>

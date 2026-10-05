@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -9,25 +10,11 @@ interface ButtonProps {
   className?: string;
 }
 
-export default function Button({
-  href,
-  children,
-  variant = "solid",
-  showArrow = true,
-  className = "",
-}: ButtonProps) {
-  const base =
-    "inline-flex items-center gap-2 px-7 min-h-[50px] text-[15px] font-semibold transition-all duration-300";
-
-  const styles =
-    variant === "solid"
-      ? "bg-skill-green text-charcoal hover:-translate-y-0.5"
-      : "border border-white/60 text-white hover:bg-white hover:text-charcoal";
-
+export default function Button({ href, children, variant = "solid", showArrow = false, className = "" }: ButtonProps) {
   return (
-    <a href={href} className={`${base} ${styles} ${className}`}>
+    <Link href={href} className={`btn group ${variant === "solid" ? "btn-primary" : "btn-secondary"} ${className}`}>
       {children}
-      {showArrow && <ArrowRight size={16} />}
-    </a>
+      {showArrow && <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />}
+    </Link>
   );
 }

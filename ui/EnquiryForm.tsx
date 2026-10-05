@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
 import { courses } from "@/lib/content";
 
 interface EnquiryFormProps {
@@ -28,11 +27,11 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
     }, 400);
   };
 
-  const labelClass = `mb-1.5 block text-[12.5px] sm:text-[13px] font-medium ${dark ? "text-white/80" : "text-charcoal"}`;
-  const inputClass = `w-full rounded-md border px-3.5 py-2 text-[13.5px] sm:py-2.5 sm:text-[14px] outline-none transition-colors focus:border-skill-green ${
+  const labelClass = `mb-1.5 block text-[15px] font-medium ${dark ? "text-white/80" : "text-navy"}`;
+  const inputClass = `w-full rounded-xl border px-4 py-3 text-[16px] outline-none transition-colors focus:border-navy ${
     dark
       ? "border-white/20 bg-transparent text-white placeholder:text-white/40"
-      : "border-black/15 bg-white text-charcoal placeholder:text-medium-gray/60"
+      : "border-line bg-white text-navy placeholder:text-grey/60"
   }`;
 
   return (
@@ -87,7 +86,7 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         <textarea
           id="message"
           name="message"
-          rows={2}
+          rows={3}
           placeholder="Tell us a little about what you're looking for"
           className={`${inputClass} sm:min-h-[70px]`}
         />
@@ -97,9 +96,9 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         type="submit"
         disabled={submitting}
         aria-live="polite"
-        className="mt-0.5 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-skill-green px-6 text-[14px] font-semibold text-charcoal transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-skill-green w-full sm:w-auto"
+        className="btn btn-primary mt-1 w-full disabled:opacity-70 sm:w-auto"
       >
-        {submitting ? "Sending..." : "Submit Enquiry"} <ArrowRight size={16} />
+        {submitting ? "Sending..." : "Enquire Now"}
       </button>
     </form>
   );
