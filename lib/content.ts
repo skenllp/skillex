@@ -10,11 +10,15 @@ export const siteConfig = {
   name: "Skillex",
   tagline: "Learn Skills. Build Your Career.",
   email: "skillexcampus@gmail.com",
-  phonePlaceholder: "+91 00000 00000",
+  phone: "+91 92073 45034",
+  phoneRaw: "+919207345034",
+  phonePlaceholder: "+91 92073 45034",
   // Single central WhatsApp number — update this once and every
   // course-specific WhatsApp CTA across the site picks it up.
-  whatsappPlaceholder: "https://wa.me/910000000000",
-  addressPlaceholder: "Skillex Campus address — placeholder, to be supplied",
+  whatsappPlaceholder: "https://wa.me/919207345034",
+  address: "Panayathil Complex, opposite bus stand, Ullanam, Parappanangadi, Keralam 676303",
+  addressPlaceholder: "Panayathil Complex, opposite bus stand, Ullanam, Parappanangadi, Keralam 676303",
+  mapsUrl: "https://maps.google.com/?q=Panayathil+Complex,+opposite+bus+stand,+Ullanam,+Parappanangadi,+Kerala+676303",
 };
 
 /** Builds a wa.me link pre-filled with a course-specific enquiry message,

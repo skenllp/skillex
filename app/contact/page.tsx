@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 export default function ContactPage({ searchParams }: { searchParams?: { course?: string } }) {
   const course = courses.find((c) => c.slug === searchParams?.course)?.slug;
   const rows = [
-    { Icon: Phone, label: "Call", value: siteConfig.phonePlaceholder, href: undefined as string | undefined },
-    { Icon: MessageCircle, label: "WhatsApp", value: "WhatsApp Us", href: siteConfig.whatsappPlaceholder },
+    { Icon: Phone, label: "Call", value: siteConfig.phone, href: `tel:${siteConfig.phoneRaw}` },
+    { Icon: MessageCircle, label: "WhatsApp", value: `WhatsApp Us (${siteConfig.phone})`, href: siteConfig.whatsappPlaceholder },
     { Icon: Mail, label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
-    { Icon: MapPin, label: "Campus", value: siteConfig.addressPlaceholder, href: undefined },
+    { Icon: MapPin, label: "Campus", value: siteConfig.address, href: siteConfig.mapsUrl },
   ];
   return (
     <main>

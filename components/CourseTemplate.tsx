@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import PageHeader from "@/ui/PageHeader";
+import ImageSlot from "@/ui/ImageSlot";
 import { careerMatrix, careerPathwaysNote, curriculumItemsFor, whatsappLinkFor, type Course } from "@/lib/content";
 
 const sectionTitle = "text-[28px] font-extrabold tracking-tight text-navy md:text-[38px]";
@@ -22,6 +23,18 @@ export default function CourseTemplate({ course }: { course: Course }) {
         <Link href={`/contact?course=${course.slug}`} className="btn btn-primary">Talk to an Advisor</Link>
         <Link href={`/enquire?course=${course.slug}`} className="btn btn-secondary">Enquire Now</Link>
       </PageHeader>
+
+      {/* Optional Course Image Slot — hides gracefully if no photo is available */}
+      <div className="container-x mt-8">
+        <ImageSlot
+          src={course.image}
+          alt={course.title}
+          label="Course Image"
+          fallbackMode="hide"
+          aspectRatio="aspect-[16/8] sm:aspect-[21/9]"
+          className="w-full shadow-sm"
+        />
+      </div>
 
       {/* At a glance */}
       <section className="section-y bg-white">

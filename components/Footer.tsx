@@ -53,11 +53,20 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Phone size={18} className="shrink-0 text-lime" />
-              <span>{siteConfig.phonePlaceholder}</span>
+              <a href={`tel:${siteConfig.phoneRaw}`} className="hover:text-lime">
+                {siteConfig.phone}
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <MapPin size={18} className="mt-1 shrink-0 text-lime" />
-              <span>{siteConfig.addressPlaceholder}</span>
+              <a
+                href={siteConfig.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-snug hover:text-lime"
+              >
+                {siteConfig.address}
+              </a>
             </li>
           </ul>
         </div>
