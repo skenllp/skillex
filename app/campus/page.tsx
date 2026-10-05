@@ -3,6 +3,7 @@ import PageHeader from "@/ui/PageHeader";
 import CampusExperience from "@/components/CampusExperience";
 import FloorPlan from "@/components/FloorPlan";
 import ImageSlot from "@/ui/ImageSlot";
+import { images } from "@/lib/images";
 import FinalCTA from "@/components/FinalCTA";
 import Reveal from "@/ui/Reveal";
 
@@ -15,24 +16,24 @@ export const metadata: Metadata = {
 const campusSpaces = [
   {
     title: "Modern Classrooms",
-    desc: "Acoustically balanced, bright learning halls equipped for lecture discussions and interactive workshops.",
-    src: "/images/classroom.webp",
+    desc: "Bright spaces built for focused learning.",
+    src: images.classroom,
     alt: "SKILLEX Modern Classrooms",
     label: "Classroom Image",
     aspect: "aspect-[16/10]",
   },
   {
-    title: "Practical Training Labs",
-    desc: "Hands-on workstations simulating actual corporate accounting, HR operations, and digital marketing desks.",
-    src: "/images/practical-training.webp",
-    alt: "SKILLEX Practical Training Labs",
+    title: "Practical Training Spaces",
+    desc: "Room to practise what you learn.",
+    src: images.practicalTraining,
+    alt: "SKILLEX Practical Training Spaces",
     label: "Practical Training Image",
     aspect: "aspect-[16/10]",
   },
   {
-    title: "Student Environment & Lounges",
-    desc: "Collaborative breakout zones where learners review projects, practice interviews, and network.",
-    src: "/images/student-environment.webp",
+    title: "Student Environment",
+    desc: "A comfortable place to study and connect.",
+    src: images.studentEnvironment,
     alt: "SKILLEX Student Environment and Breakout Areas",
     label: "Student Image",
     aspect: "aspect-[16/10]",
@@ -44,14 +45,14 @@ export default function CampusPage() {
     <main>
       <PageHeader
         title="A Better Place to Learn."
-        intro="An environment designed specifically for focused learning, hands-on application, and professional workplace readiness."
+        intro="An environment built for focused learning, practical training and career development."
       />
 
       {/* Main Campus Exterior Slot */}
       <section className="bg-white pt-10 md:pt-14">
         <div className="container-x">
           <ImageSlot
-            src="/images/campus-exterior.webp"
+            src={images.campusExterior}
             alt="SKILLEX Campus Exterior Architecture"
             label="Campus Image"
             fallbackMode="neutral"
@@ -65,15 +66,11 @@ export default function CampusPage() {
       <section className="section-y bg-white">
         <div className="container-x">
           <Reveal className="max-w-[620px]">
-            <div className="mb-3 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-lime-dark">
-              <span className="h-1.5 w-6 rounded-full bg-lime" />
-              <span>Campus Tour</span>
-            </div>
             <h2 className="text-[32px] font-extrabold tracking-tight text-navy sm:text-[40px]">
-              Spaces Designed for Real-World Skills
+              Inside the Campus
             </h2>
             <p className="mt-4 text-[17px] leading-relaxed text-grey">
-              Every room at SKILLEX is purposefully structured to mirror professional work environments.
+              Spaces for learning, practice and career development.
             </p>
           </Reveal>
 

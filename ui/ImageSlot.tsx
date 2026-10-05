@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 export type ImageSlotType =
@@ -90,15 +91,14 @@ export default function ImageSlot({
       data-slot={label}
       className={`relative overflow-hidden ${aspectRatio} ${rounded} ${className} bg-[#F4F5F1]`}
     >
-      <img
+      <Image
         src={src}
         alt={alt}
-        loading="lazy"
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
         onLoad={() => setLoaded(true)}
         onError={() => setHasError(true)}
-        className={`h-full w-full object-cover transition-opacity duration-300 ${
-          loaded ? "opacity-100" : "opacity-0"
-        }`}
+        className={`object-cover transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
       />
     </div>
   );

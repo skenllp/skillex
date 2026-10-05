@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { courses, insightArticles } from "@/lib/content";
+import { courses, insightArticles, testimonials } from "@/lib/content";
 
 // Replace with the production domain before deploying.
 const BASE_URL = "https://www.skillexcampus.example";
@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/courses",
     "/campus",
     "/about",
-    "/student-stories",
     "/insights",
     "/contact",
     "/enquire",
@@ -18,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
   ];
 
+  if (testimonials.length > 0) staticRoutes.push("/student-stories");
   const courseRoutes = courses.map((c) => `/courses/${c.slug}`);
   const insightRoutes = insightArticles.map((a) => `/insights/${a.slug}`);
 

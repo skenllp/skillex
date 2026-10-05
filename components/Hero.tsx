@@ -13,7 +13,7 @@ export default function Hero() {
       {/* Subtle dot pattern at approx 10-12% opacity */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.12] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"
+        className="pointer-events-none absolute inset-0 opacity-[0.14] [mask-image:linear-gradient(to_left,black,transparent_70%)]"
         style={{
           backgroundImage: "radial-gradient(#0D0E2B 1.2px, transparent 1.2px)",
           backgroundSize: "28px 28px",
@@ -23,26 +23,19 @@ export default function Hero() {
       {/* Tasteful logo-inspired arrow graphic, sized moderately at 12-14% opacity */}
       <svg
         aria-hidden
-        viewBox="0 0 320 320"
-        className="pointer-events-none absolute -bottom-10 -right-10 h-[220px] w-[220px] text-lime opacity-[0.12] md:-right-4 md:top-1/2 md:h-[340px] md:w-[340px] md:-translate-y-1/2 md:opacity-[0.14]"
+        viewBox="0 0 400 400"
+        className="pointer-events-none absolute -bottom-16 -right-20 h-[320px] w-[320px] text-lime opacity-30 md:-right-6 md:bottom-auto md:top-1/2 md:h-[600px] md:w-[600px] md:-translate-y-1/2 md:opacity-90"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.5"
+        strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M40 280 L260 60" />
-        <path d="M140 55 H265 V180" />
+        <path d="M40 360 L330 70" />
+        <path d="M190 62 H338 V210" />
       </svg>
 
       <div className="container-x relative flex min-h-[520px] flex-col justify-center py-20 md:min-h-[calc(100svh-76px)] md:max-h-[700px] md:py-24">
-        {/* Subtle pill tag */}
-        <div className="rise mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 backdrop-blur-sm">
-          <span className="h-2 w-2 rounded-full bg-lime" />
-          <span className="text-[13px] font-semibold tracking-wide text-navy">
-            SKILLEX CAREER INSTITUTE
-          </span>
-        </div>
 
         <h1 className="rise max-w-[820px] text-[44px] font-extrabold leading-[1.05] tracking-tight text-navy sm:text-[60px] md:text-[80px]">
           Learn <span className="text-lime">Skills.</span>

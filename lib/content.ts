@@ -1,3 +1,5 @@
+import { images } from "@/lib/images";
+
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
@@ -43,7 +45,7 @@ export const courses = [
     title: "Office Administration & Accounting",
     category: "Office Administration & Accounting",
     duration: "3 Month Career Program",
-    image: "/images/course-accounting.webp",
+    image: images.courseAccounting,
     imageAlt: "Office Administration & Accounting training at Skillex",
     short: "Build practical office, accounting and business administration skills.",
     /** Verbatim course overview from the official Business Administration
@@ -143,8 +145,7 @@ export const courses = [
     slug: "office-administration-hr",
     title: "Sales Management & HR",
     category: "Sales Management & HR",
-    duration: "3 Month Career Program",
-    image: "/images/course-sales-hr.webp",
+    image: images.courseSalesHr,
     imageAlt: "Sales Management and HR training at Skillex",
     short: "Learn sales, people management and modern HR practices.",
     intro:
@@ -219,8 +220,7 @@ export const courses = [
     slug: "digital-marketing",
     title: "AI-Integrated Digital Marketing",
     category: "AI-Integrated Digital Marketing",
-    duration: "3 Month Career Program",
-    image: "/images/course-digital-marketing.webp",
+    image: images.courseDigitalMarketing,
     imageAlt: "AI-Integrated Digital Marketing training at Skillex",
     short: "Learn digital marketing with today's AI-powered tools and workflows.",
     intro:

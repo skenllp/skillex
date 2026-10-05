@@ -24,17 +24,12 @@ export default function CourseTemplate({ course }: { course: Course }) {
         <Link href={`/enquire?course=${course.slug}`} className="btn btn-secondary">Enquire Now</Link>
       </PageHeader>
 
-      {/* Optional Course Image Slot — hides gracefully if no photo is available */}
-      <div className="container-x mt-8">
-        <ImageSlot
-          src={course.image}
-          alt={course.title}
-          label="Course Image"
-          fallbackMode="hide"
-          aspectRatio="aspect-[16/8] sm:aspect-[21/9]"
-          className="w-full shadow-sm"
-        />
-      </div>
+      {/* Optional course photo — renders only once a path is set in lib/images.ts */}
+      {course.image && (
+        <div className="container-x mt-10">
+          <ImageSlot src={course.image} alt={course.title} label="Course Image" fallbackMode="hide" aspectRatio="aspect-[16/8] sm:aspect-[21/9]" className="w-full" />
+        </div>
+      )}
 
       {/* At a glance */}
       <section className="section-y bg-white">
