@@ -5,13 +5,13 @@
  */
 export const images = {
   campusExterior: null as string | null,
-  classroom: null as string | null,
+  classroom: "/images/classroom.webp" as string | null,
   practicalTraining: null as string | null,
   studentEnvironment: null as string | null,
   aboutTeam: null as string | null,
   mentorGuidance: null as string | null,
   // Course photos are optional and only used on each course's own page.
   courseAccounting: null as string | null,
-  courseSalesHr: null as string | null,
-  courseDigitalMarketing: null as string | null,
+  courseSalesHr: "/images/course-sales-hr.webp" as string | null,
+  courseDigitalMarketing: "/images/course-digital-marketing.webp" as string | null,
 };
