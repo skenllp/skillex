@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { courses, siteConfig } from "@/lib/content";
+import { courses, siteConfig, whatsappLinkFor } from "@/lib/content";
 
 interface EnquiryFormProps {
   dark?: boolean;
@@ -17,6 +17,7 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [fallbackText, setFallbackText] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,14 +41,46 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         }),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.ok) {
-        setError(`${json.message || "Something went wrong."} You can also email ${siteConfig.email} or WhatsApp us.`);
-        setSubmitting(false);
+      if (res.ok && json.ok) {
+        router.push("/thank-you");
         return;
       }
-      router.push("/thank-you");
+
+      // Server could not send. Try FormSubmit straight from the browser as a backup.
+      const courseTitle = courses.find((c) => c.slug === data.get("course"))?.title ?? "Not selected";
+      try {
+        const r2 = await fetch(`https://formsubmit.co/ajax/${siteConfig.email}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            name: data.get("name"),
+            phone: data.get("phone"),
+            email: data.get("email"),
+            course: courseTitle,
+            message: data.get("message") || "(none)",
+            page: window.location.href,
+            _subject: `New Skillex enquiry: ${courseTitle}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        });
+        const j2 = await r2.json().catch(() => ({}));
+        if (r2.ok && (j2.success === true || j2.success === "true")) {
+          router.push("/thank-you");
+          return;
+        }
+      } catch {
+        /* fall through to manual options */
+      }
+
+      setFallbackText(
+        `Hi Skillex, I'd like to enquire about ${courseTitle}.\nName: ${data.get("name")}\nPhone: ${data.get("phone")}\nEmail: ${data.get("email")}`
+      );
+      setError(`${json.message || "Something went wrong."}${json.code ? ` (${json.code})` : ""} Please contact us directly instead:`);
+      setSubmitting(false);
     } catch {
-      setError(`Network problem. Please try again, or email ${siteConfig.email} or WhatsApp us.`);
+      setFallbackText(`Hi Skillex, I'd like to enquire about a course. Name: ${data.get("name")}, Phone: ${data.get("phone")}`);
+      setError("Network problem. Please try again, or contact us directly:");
       setSubmitting(false);
     }
   };
@@ -119,9 +152,22 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
       </div>
 
       {error && (
-        <p role="alert" className={`text-[15px] ${dark ? "text-red-300" : "text-red-600"}`}>
-          {error}
-        </p>
+        <div role="alert" className={`text-[15px] ${dark ? "text-red-300" : "text-red-600"}`}>
+          <p>{error}</p>
+          {fallbackText && (
+            <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1 font-semibold">
+              <a href={whatsappLinkFor(fallbackText)} target="_blank" rel="noopener noreferrer" className="underline">
+                Send on WhatsApp
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Skillex enquiry")}&body=${encodeURIComponent(fallbackText)}`}
+                className="underline"
+              >
+                Send by email
+              </a>
+            </p>
+          )}
+        </div>
       )}
 
       <button

@@ -7,7 +7,9 @@ export const runtime = "nodejs";
 /**
  * Receives enquiries from <EnquiryForm /> and emails them to siteConfig.email.
  *
- * Preferred (reliable, in-house): set these environment variables on your host
+ * Option A (simplest, no Google security setup): set RESEND_API_KEY (from resend.com,
+ *   signed up with the same address as siteConfig.email).
+ * Option B: Gmail SMTP — set these environment variables on your host
  *   SMTP_USER = skillexcampus@gmail.com
  *   SMTP_PASS = a Gmail "App Password" (Google Account > Security > 2-Step Verification > App passwords)
  * Fallback if they are not set: the enquiry is forwarded to FormSubmit (needs one-time activation).
@@ -41,7 +43,27 @@ export async function POST(req: Request) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
+  const resendKey = process.env.RESEND_API_KEY;
+
   try {
+    if (resendKey) {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from: "Skillex Website <onboarding@resend.dev>",
+          to: [siteConfig.email],
+          reply_to: `${name} <${email}>`,
+          subject,
+          text: `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nCourse: ${courseTitle}\n\nMessage:\n${message}\n\nSent from: ${page}`,
+        }),
+      });
+      if (res.ok) return NextResponse.json({ ok: true });
+      const detail = await res.text().catch(() => "");
+      console.error("Resend failed:", res.status, detail);
+      return NextResponse.json({ ok: false, code: `RESEND_${res.status}`, message: "We couldn't send your enquiry right now." }, { status: 502 });
+    }
+
     if (user && pass) {
       const transporter = nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
       await transporter.sendMail({
@@ -67,6 +89,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         ok: false,
+        code: "SMTP_NOT_SET",
         message: /activat/i.test(hint)
           ? "Email service needs one-time activation. Check skillexcampus@gmail.com (and spam) for the FormSubmit activation email, click the link, then submit again."
           : "We couldn't send your enquiry right now.",
@@ -75,6 +98,8 @@ export async function POST(req: Request) {
     );
   } catch (err) {
     console.error("Enquiry email failed:", err);
-    return NextResponse.json({ ok: false, message: "We couldn't send your enquiry right now." }, { status: 502 });
+    const e = err as { code?: string; responseCode?: number };
+    const code = e.code === "EAUTH" || e.responseCode === 535 ? "SMTP_AUTH" : `SMTP_${e.code || "ERROR"}`;
+    return NextResponse.json({ ok: false, code, message: "We couldn't send your enquiry right now." }, { status: 502 });
   }
 }
