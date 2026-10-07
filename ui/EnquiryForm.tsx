@@ -10,10 +10,8 @@ interface EnquiryFormProps {
 }
 
 /**
- * Sends each enquiry by email to siteConfig.email (skillexcampus@gmail.com)
- * through FormSubmit's AJAX endpoint. The very first submission triggers a
- * one-time activation email from FormSubmit to that inbox — click the
- * confirm link in it, and every later enquiry arrives normally.
+ * Posts each enquiry to /api/enquiry (app/api/enquiry/route.ts), which emails it
+ * to siteConfig.email. See that file for the SMTP setup.
  */
 export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryFormProps) {
   const router = useRouter();
@@ -24,33 +22,32 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
     e.preventDefault();
     if (submitting) return;
     setError("");
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const courseTitle = courses.find((c) => c.slug === data.get("course"))?.title ?? "Not selected";
+    const data = new FormData(e.currentTarget);
 
     setSubmitting(true);
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${siteConfig.email}`, {
+      const res = await fetch("/api/enquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.get("name"),
           phone: data.get("phone"),
           email: data.get("email"),
-          course: courseTitle,
-          message: data.get("message") || "(none)",
+          course: data.get("course"),
+          message: data.get("message"),
           page: window.location.href,
-          _subject: `New Skillex enquiry: ${courseTitle}`,
-          _template: "table",
-          _captcha: "false",
           _honey: data.get("_honey") || "",
         }),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || json.success === "false" || json.success === false) throw new Error("failed");
+      if (!res.ok || !json.ok) {
+        setError(`${json.message || "Something went wrong."} You can also email ${siteConfig.email} or WhatsApp us.`);
+        setSubmitting(false);
+        return;
+      }
       router.push("/thank-you");
     } catch {
-      setError(`Sorry, we couldn't send your enquiry. Please try again, or email ${siteConfig.email} or WhatsApp us.`);
+      setError(`Network problem. Please try again, or email ${siteConfig.email} or WhatsApp us.`);
       setSubmitting(false);
     }
   };
