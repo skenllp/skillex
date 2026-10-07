@@ -17,7 +17,37 @@ export const runtime = "nodejs";
 
 const clean = (v: unknown, max = 500) => String(v ?? "").replace(/[\r\n]+/g, " ").trim().slice(0, max);
 
+/**
+ * Basic anti-spam: per-IP rate limit (in-memory, resets when the serverless
+ * instance restarts, so it is a speed bump rather than a hard guarantee).
+ * For stronger protection add Cloudflare Turnstile.
+ */
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_WINDOW = 5;
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) {
+    for (const [k, v] of hits) if (v.every((t) => now - t >= WINDOW_MS)) hits.delete(k);
+  }
+  return recent.length > MAX_PER_WINDOW;
+}
+
+const countLinks = (text: string) => (text.match(/https?:\/\/|www\./gi) ?? []).length;
+
 export async function POST(req: Request) {
+  const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
+  if (rateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, code: "RATE_LIMIT", message: "Too many enquiries from your network. Please try again in a few minutes or contact us on WhatsApp." },
+      { status: 429 }
+    );
+  }
+
   let body: Record<string, unknown>;
   try {
     body = await req.json();
@@ -38,6 +68,9 @@ export async function POST(req: Request) {
   if (!name || !phone || !/^\S+@\S+\.\S+$/.test(email)) {
     return NextResponse.json({ ok: false, message: "Please enter your name, phone number and a valid email." }, { status: 400 });
   }
+
+  // Drop link-stuffed submissions (typical spam). Pretend success so bots don't retry.
+  if (countLinks(message) > 1 || countLinks(name) > 0) return NextResponse.json({ ok: true });
 
   const subject = `New Skillex enquiry: ${courseTitle}`;
   const user = process.env.SMTP_USER;

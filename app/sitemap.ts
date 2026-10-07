@@ -1,8 +1,6 @@
 import type { MetadataRoute } from "next";
 import { courses, insightArticles, testimonials } from "@/lib/content";
-
-// Replace with the production domain before deploying.
-const BASE_URL = "https://www.skillexcampus.example";
+import { BASE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

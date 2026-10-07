@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { BASE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,10 +13,6 @@ const inter = Inter({
   display: "swap",
 });
 
-// Replace with the production domain before deploying — used for canonical
-// URLs, Open Graph, and the sitemap/robots files in this project.
-const BASE_URL = "https://www.skillexcampus.example";
-
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -24,14 +21,12 @@ export const metadata: Metadata = {
   },
   description:
     "Practical, career-focused programs in Office Administration & Accounting, Sales Management & HR, and AI-Integrated Digital Marketing.",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Skillex — Learn Skills. Build Your Career.",
     description:
       "Practical, career-focused programs designed to turn learning into real-world skills.",
     type: "website",
+    url: BASE_URL,
     siteName: "Skillex",
   },
   robots: {

@@ -46,6 +46,13 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         return;
       }
 
+      // Rate-limited: don't bypass the limit via the backup service.
+      if (res.status === 429) {
+        setError(json.message || "Too many enquiries. Please try again in a few minutes or contact us on WhatsApp.");
+        setSubmitting(false);
+        return;
+      }
+
       // Server could not send. Try FormSubmit straight from the browser as a backup.
       const courseTitle = courses.find((c) => c.slug === data.get("course"))?.title ?? "Not selected";
       try {
@@ -76,7 +83,8 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
       setFallbackText(
         `Hi Skillex, I'd like to enquire about ${courseTitle}.\nName: ${data.get("name")}\nPhone: ${data.get("phone")}\nEmail: ${data.get("email")}`
       );
-      setError(`${json.message || "Something went wrong."}${json.code ? ` (${json.code})` : ""} Please contact us directly instead:`);
+      if (json.code) console.error("Enquiry error:", json.code);
+      setError("We couldn't send your enquiry right now. Please contact us directly instead:");
       setSubmitting(false);
     } catch {
       setFallbackText(`Hi Skillex, I'd like to enquire about a course. Name: ${data.get("name")}, Phone: ${data.get("phone")}`);
