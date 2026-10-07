@@ -51,7 +51,8 @@ export async function POST(req: Request) {
         method: "POST",
         headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
         body: JSON.stringify({
-          from: "Skillex Website <onboarding@resend.dev>",
+          // skillex.in is verified in Resend. Override with RESEND_FROM if you prefer another address.
+          from: process.env.RESEND_FROM || "Skillex Website <enquiries@skillex.in>",
           to: [siteConfig.email],
           reply_to: `${name} <${email}>`,
           subject,
