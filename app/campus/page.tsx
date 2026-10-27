@@ -53,7 +53,7 @@ export default function CampusPage() {
         <div className="container-x">
           <ImageSlot
             src={images.campusExterior}
-            alt="SKILLEX Campus Exterior Architecture"
+            alt="SKILLEX training hall with learners at laptops"
             label="Campus Image"
             fallbackMode="neutral"
             aspectRatio="aspect-[16/8] sm:aspect-[21/9]"
