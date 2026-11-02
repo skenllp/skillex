@@ -72,7 +72,20 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-[14px] text-white/55 sm:flex-row sm:justify-between">
-          <span>&copy; {new Date().getFullYear()} Skillex. All rights reserved.</span>
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
+            <span>&copy; {new Date().getFullYear()} Skillex. All rights reserved.</span>
+            <span className="text-white/40">
+              Developed by{" "}
+              <a
+                href="https://sahilmuhd.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lime/80 font-medium transition-colors hover:text-lime"
+              >
+                Sahil
+              </a>
+            </span>
+          </div>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="hover:text-lime">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-lime">Terms</Link>
