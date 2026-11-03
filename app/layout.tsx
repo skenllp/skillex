@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "./" },
   twitter: { card: "summary_large_image" },
   openGraph: {
-    images: [{ url: "/assets/hero-poster.jpg", alt: "Skillex — Learn Skills. Build Your Career." }],
+    images: [{ url: "/assets/og-image.jpg", alt: "Skillex — Learn Skills. Build Your Career." }],
     locale: "en_IN",
     title: "Skillex — Learn Skills. Build Your Career.",
     description:
