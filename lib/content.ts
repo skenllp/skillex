@@ -332,15 +332,15 @@ export const careerMatrix = courses.reduce(
 export const courseFAQs = [
   {
     q: "Do I need prior experience to join?",
-    a: "No prior experience is required — placeholder answer, to be confirmed with real admission criteria.",
+    a: "Our programs are designed for learners starting their careers. Contact the team to confirm eligibility for the course you are interested in.",
   },
   {
     q: "How is the course delivered?",
-    a: "Delivery format (in-person / hybrid / schedule) — placeholder, to be confirmed.",
+    a: "Courses are taught in person at our Parappanangadi campus. Call or WhatsApp us for current batch timings.",
   },
   {
     q: "What happens after I complete the course?",
-    a: "Next steps after completion — placeholder, to be confirmed with real guidance/placement process.",
+    a: "You finish with practical skills and a portfolio of work, and our team guides you on the career pathways for your course.",
   },
 ];
 
@@ -579,6 +579,13 @@ export const insightCategories = [
 export const insightArticles = [
   {
     slug: "ai-tools-transforming-modern-office-administration",
+    body: [
+      { heading: "Why AI matters in the office", text: "Office administration used to be defined by how fast you could type, file and schedule. Today, much of that routine work can be sped up with AI assistants. The administrators who stand out are the ones who know which tools to use, how to ask them for the right output, and how to check the result before it goes to a manager or client." },
+      { heading: "Drafting and communication", text: "AI writing assistants can turn rough notes into a clear email, summarise a long thread, or prepare meeting minutes in minutes. The skill is in the prompt: state the audience, the purpose, the tone and any facts that must be included. Always read the draft, correct names, dates and figures, and keep a professional voice." },
+      { heading: "Spreadsheets and data", text: "Modern spreadsheet tools can suggest formulas, clean messy lists and build simple summaries from plain-language instructions. A solid grounding in Excel or Google Sheets still matters, because you need to understand what the formula is doing to trust it." },
+      { heading: "Scheduling and coordination", text: "Smart calendars can propose meeting times, send reminders and flag clashes. Administrators who set these up well free hours each week for work that needs judgement, such as coordinating teams, handling vendors and supporting leadership." },
+      { heading: "What to build next", text: "Start small: pick one repetitive task, try an AI tool on it, and measure the time saved. Pair that habit with core skills such as business communication, documentation and basic accounting, and you become the person every team wants to hire." },
+    ],
     category: "Office Administration & HR",
     title: "How AI Tools are Transforming Modern Office Administration in 2026",
     excerpt: "Discover the essential AI prompts, automated spreadsheets, and smart scheduling tools that modern executive assistants use.",
@@ -586,6 +593,13 @@ export const insightArticles = [
   },
   {
     slug: "top-digital-marketing-skills-employers-look-for",
+    body: [
+      { heading: "Beyond posting on social media", text: "Employers hiring digital marketers look for people who can connect activity to results. Knowing how to schedule a post is the starting point; knowing why it worked, and what to do next, is what gets you hired." },
+      { heading: "Content and storytelling", text: "Clear writing, simple design and short-form video are everyday skills. AI tools can speed up first drafts and ideas, but brands still need a human who understands the audience and keeps the message accurate and on-brand." },
+      { heading: "Paid advertising", text: "Running campaigns on Meta and Google means setting a budget, choosing an audience, writing the ad and reading the numbers. Employers value candidates who have actually practised building and optimising a campaign, even a small one." },
+      { heading: "Search and analytics", text: "Search engine optimisation brings steady, free traffic, and analytics tools show what visitors actually do. Being comfortable with metrics such as reach, clicks, conversions and cost per lead lets you explain your work in business terms." },
+      { heading: "Building proof", text: "A small portfolio beats a long list of claims. Document a campaign you planned, the content you made and the results you tracked. Practical projects like these are what turn training into job-ready experience." },
+    ],
     category: "Digital Marketing",
     title: "The Most In-Demand Digital Marketing Skills Hiring Managers Want",
     excerpt: "From AI-assisted content creation to performance analytics, here is what sets standout marketers apart in today's job market.",
@@ -593,6 +607,13 @@ export const insightArticles = [
   },
   {
     slug: "accounting-fundamentals-every-business-administrator-needs",
+    body: [
+      { heading: "Why administrators need accounting basics", text: "Every growing business runs on organised records. Even if you are not an accountant, understanding how money is recorded helps you work with owners, accountants and auditors without confusion." },
+      { heading: "Bookkeeping", text: "Bookkeeping means recording each transaction accurately: sales, purchases, expenses and payments. Consistent entries, supported by bills and receipts, make it easy to see how the business is really performing." },
+      { heading: "Billing and invoicing", text: "A correct invoice includes the customer details, itemised charges, applicable taxes, dates and payment terms. Following up on unpaid invoices on time protects cash flow." },
+      { heading: "Financial documentation", text: "Keep vouchers, bank statements, invoices and tax records filed in a logical order, on paper and digitally. Good documentation saves hours at tax time and builds trust during any review." },
+      { heading: "Using accounting software", text: "Tools such as Tally and spreadsheet-based ledgers are widely used by small and medium businesses. Practising on real examples is the quickest way to become confident, and it makes you a stronger candidate for administration and accounts roles." },
+    ],
     category: "Business Administration & Accounting",
     title: "Accounting Fundamentals Every Business Administrator Needs",
     excerpt: "A practical look at the bookkeeping, billing and financial-documentation basics that keep growing businesses organised.",
@@ -600,6 +621,13 @@ export const insightArticles = [
   },
   {
     slug: "how-to-ace-your-first-corporate-job-interview",
+    body: [
+      { heading: "Prepare before you walk in", text: "Research the company, read the job description carefully and note which of your skills match each requirement. Prepare a short introduction covering who you are, what you have learned and why this role suits you." },
+      { heading: "Answering competency questions", text: "Interviewers often ask about teamwork, problem solving and handling pressure. Use a simple structure: describe the situation, what you did, and the result. Real examples from training projects count when you are starting out." },
+      { heading: "Body language and communication", text: "Arrive early, greet everyone politely, sit upright, and keep steady eye contact. Speak clearly and pause to think before answering. Calm, respectful communication often matters as much as the answer itself." },
+      { heading: "Presenting your work", text: "Bring a short portfolio or a few examples of practical work you completed. Walking an interviewer through a project shows initiative and makes your skills concrete." },
+      { heading: "Finish well", text: "Ask one or two thoughtful questions about the role and team, thank the interviewer, and send a brief thank-you message afterwards. Each interview, successful or not, teaches you something for the next one." },
+    ],
     category: "Career Guide",
     title: "The Ultimate Guide to Acing Your First Corporate Interview",
     excerpt: "Key strategies for confident body language, answering competency questions, and presenting your Skillex portfolio with impact.",

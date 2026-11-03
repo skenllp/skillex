@@ -40,7 +40,14 @@ function rateLimited(ip: string): boolean {
 const countLinks = (text: string) => (text.match(/https?:\/\/|www\./gi) ?? []).length;
 
 export async function POST(req: Request) {
-  const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
+  // Prefer headers the hosting platform sets itself (a client cannot forge these on Vercel).
+  // x-forwarded-for is only a fallback: its left-most entry can be spoofed, so take the right-most.
+  const forwarded = (req.headers.get("x-forwarded-for") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+  const ip =
+    req.headers.get("x-vercel-forwarded-for")?.trim() ||
+    req.headers.get("x-real-ip")?.trim() ||
+    forwarded[forwarded.length - 1] ||
+    "unknown";
   if (rateLimited(ip)) {
     return NextResponse.json(
       { ok: false, code: "RATE_LIMIT", message: "Too many enquiries from your network. Please try again in a few minutes or contact us on WhatsApp." },
@@ -69,14 +76,24 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, message: "Please enter your name, phone number and a valid email." }, { status: 400 });
   }
 
-  // Drop link-stuffed submissions (typical spam). Pretend success so bots don't retry.
-  if (countLinks(message) > 1 || countLinks(name) > 0) return NextResponse.json({ ok: true });
+  // Reject link-stuffed submissions (typical spam) with a visible message, so a real
+  // person who pasted a couple of links is told what to fix instead of silently losing the enquiry.
+  if (countLinks(message) > 2 || countLinks(name) > 0) {
+    return NextResponse.json(
+      { ok: false, code: "LINKS", message: "Please remove web links from your message, or contact us on WhatsApp instead." },
+      { status: 400 }
+    );
+  }
 
   const subject = `New Skillex enquiry: ${courseTitle}`;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
   const resendKey = process.env.RESEND_API_KEY;
+
+  if (!resendKey && !(user && pass) && process.env.NODE_ENV === "production") {
+    console.warn("Enquiry API: no RESEND_API_KEY or SMTP_USER/SMTP_PASS set; using FormSubmit fallback, which needs one-time activation.");
+  }
 
   try {
     if (resendKey) {

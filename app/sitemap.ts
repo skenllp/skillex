@@ -21,7 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticRoutes, ...courseRoutes, ...insightRoutes].map((path) => ({
     url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.7,
   }));

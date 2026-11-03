@@ -46,8 +46,8 @@ export default function EnquiryForm({ dark = false, defaultCourse }: EnquiryForm
         return;
       }
 
-      // Rate-limited: don't bypass the limit via the backup service.
-      if (res.status === 429) {
+      // Rate-limited or rejected by validation: don't bypass via the backup service.
+      if (res.status === 429 || res.status === 400) {
         setError(json.message || "Too many enquiries. Please try again in a few minutes or contact us on WhatsApp.");
         setSubmitting(false);
         return;

@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "Thank You — Skillex",
   description: "Your enquiry has been received.",
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouPage() {

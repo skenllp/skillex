@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { BASE_URL } from "@/lib/site";
 import PageHeader from "@/ui/PageHeader";
 import ImageSlot from "@/ui/ImageSlot";
 import { careerMatrix, careerPathwaysNote, curriculumItemsFor, whatsappLinkFor, type Course } from "@/lib/content";
@@ -17,8 +18,17 @@ export default function CourseTemplate({ course }: { course: Course }) {
     { label: "Who it's for", value: course.whoShouldJoin[0] },
   ];
 
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: course.title,
+    description: course.focus,
+    provider: { "@type": "EducationalOrganization", name: "Skillex", sameAs: BASE_URL },
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }} />
       <PageHeader title={course.title} intro={course.focus}>
         <Link href={`/contact?course=${course.slug}`} className="btn btn-primary">Talk to an Advisor</Link>
         <Link href={`/enquire?course=${course.slug}`} className="btn btn-secondary">Enquire Now</Link>
