@@ -9,6 +9,9 @@ const nextConfig = {
   // retired entirely in the future.
   async redirects() {
     return [
+      // Old website (booking/shop platform) URLs that Google still has on record.
+      { source: "/shop/:path*", destination: "/courses", permanent: true },
+      { source: "/m/:path*", destination: "/", permanent: true },
       {
         source: "/courses/office-administration",
         destination: "/courses/office-administration-hr",
