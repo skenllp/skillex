@@ -4,8 +4,8 @@ import EnquiryForm from "@/ui/EnquiryForm";
 import { courses } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Enquire Now — Skillex",
-  description: "Send an enquiry to Skillex and take the first step toward your next career.",
+  title: "Enquire Now | Skillex Courses, Parappanangadi",
+  description: "Send an enquiry to Skillex and get course details, batch timings and career guidance from our team in Parappanangadi, Kerala.",
 };
 
 export default function EnquirePage({ searchParams }: { searchParams?: { course?: string } }) {

@@ -133,9 +133,9 @@ export const courses = [
       "financial documentation",
     ],
     seo: {
-      title: "Office Administration & Accounting Course | Skillex",
+      title: "Accounting & Tally Course in Malappuram | Skillex",
       description:
-        "A 3 month career program building practical business operations, office management and accounting skills for today's competitive job market.",
+        "3-month career program in accounting, Tally, GST basics, MS Excel and office administration. Practical training in Parappanangadi, Kerala.",
     },
   },
   {
@@ -208,9 +208,9 @@ export const courses = [
       "people operations",
     ],
     seo: {
-      title: "Sales Management & HR Course | Skillex",
+      title: "Sales & HR Course in Malappuram | Skillex",
       description:
-        "A career-focused programme building practical office administration, communication, coordination and HR fundamentals for modern workplaces.",
+        "Career-focused sales management and HR training covering communication, coordination and HR fundamentals. Practical learning in Parappanangadi, Kerala.",
     },
   },
   {
@@ -294,9 +294,9 @@ export const courses = [
       "ai marketing",
     ],
     seo: {
-      title: "AI-Integrated Digital Marketing Course | Skillex",
+      title: "AI Digital Marketing Course in Malappuram | Skillex",
       description:
-        "A practical digital marketing programme covering modern channels, content, advertising, analytics and AI-assisted marketing workflows.",
+        "Practical digital marketing course covering social media, Meta ads, content, analytics and AI tools. Learn in Parappanangadi, Kerala.",
     },
   },
 ] as const;

@@ -4,8 +4,8 @@ import PageHeader from "@/ui/PageHeader";
 import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Courses — Skillex",
-  description: "Practical, career-focused programs in office administration & accounting, sales management & HR, and AI-integrated digital marketing.",
+  title: "Job-Oriented Courses in Malappuram | Skillex",
+  description: "Explore Skillex courses: AI-integrated digital marketing, office administration & accounting (Tally, GST), and sales & HR. Practical training in Parappanangadi.",
 };
 
 export default function CoursesPage() {

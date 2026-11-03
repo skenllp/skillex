@@ -7,9 +7,9 @@ import { images } from "@/lib/images";
 import Reveal from "@/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "About Us — Skillex",
+  title: "About Skillex | Career Training Institute, Kerala",
   description:
-    "Skillex is a career-training institute focused on practical, industry-relevant skills that turn learning into real workplace readiness.",
+    "Skillex is a career-training institute in Parappanangadi, Kerala, focused on practical, industry-relevant skills that make learners workplace ready.",
 };
 
 export default function AboutPage() {

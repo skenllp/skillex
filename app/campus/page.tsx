@@ -8,9 +8,9 @@ import FinalCTA from "@/components/FinalCTA";
 import Reveal from "@/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Campus & Facilities — Skillex",
+  title: "Campus & Facilities in Parappanangadi | Skillex",
   description:
-    "An environment built for focused learning, practical workplace training, and professional career development.",
+    "Visit the Skillex campus opposite the Parappanangadi bus stand: modern classrooms and practical training spaces built for focused, career-ready learning.",
 };
 
 const campusSpaces = [

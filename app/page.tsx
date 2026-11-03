@@ -8,9 +8,9 @@ import StudentStories from "@/components/StudentStories";
 import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Skillex — Career Training Institute in Parappanangadi, Kerala",
+  title: "Skillex | Skill Training Courses in Parappanangadi, Kerala",
   description:
-    "Practical, career-focused courses in Office Administration & Accounting, Sales Management & HR, and AI-Integrated Digital Marketing at Skillex, Parappanangadi, Kerala.",
+    "Job-oriented courses in AI digital marketing, accounting with Tally & GST, HR and office administration. Practical training in Parappanangadi, Malappuram.",
 };
 
 export default function Home() {

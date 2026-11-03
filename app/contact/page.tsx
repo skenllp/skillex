@@ -5,8 +5,8 @@ import EnquiryForm from "@/ui/EnquiryForm";
 import { courses, siteConfig } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Contact — Skillex",
-  description: "Talk to the Skillex team by phone, WhatsApp, email or enquiry form.",
+  title: "Contact Skillex | Call, WhatsApp or Visit Us",
+  description: "Talk to the Skillex team in Parappanangadi by phone, WhatsApp or email, or visit the campus opposite the bus stand, Ullanam. Get course guidance today.",
 };
 
 export default function ContactPage({ searchParams }: { searchParams?: { course?: string } }) {
