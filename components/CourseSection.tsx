@@ -5,7 +5,7 @@ import Reveal from "@/ui/Reveal";
 
 const icons: Record<string, typeof Calculator> = {
   "business-administration-accounting": Calculator,
-  "office-administration-hr": Users,
+  "professional-diploma-accounting-taxation": Users,
   "digital-marketing": Megaphone,
 };
 

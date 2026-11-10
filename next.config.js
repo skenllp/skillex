@@ -12,9 +12,15 @@ const nextConfig = {
       // Old website (booking/shop platform) URLs that Google still has on record.
       { source: "/shop/:path*", destination: "/courses", permanent: true },
       { source: "/m/:path*", destination: "/", permanent: true },
+      // Sales Management & HR was replaced by the Professional Diploma in Accounting & Taxation.
+      {
+        source: "/courses/office-administration-hr",
+        destination: "/courses/professional-diploma-accounting-taxation",
+        permanent: true,
+      },
       {
         source: "/courses/office-administration",
-        destination: "/courses/office-administration-hr",
+        destination: "/courses/business-administration-accounting",
         permanent: true,
       },
       {

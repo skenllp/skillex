@@ -12,6 +12,5 @@ export const images = {
   mentorGuidance: "/images/mentor-guidance.webp" as string | null,
   // Course photos are optional and only used on each course's own page.
   courseAccounting: "/images/course-accounting.webp" as string | null,
-  courseSalesHr: "/images/course-sales-hr.webp" as string | null,
   courseDigitalMarketing: "/images/course-digital-marketing.webp" as string | null,
 };

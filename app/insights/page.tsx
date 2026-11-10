@@ -10,7 +10,7 @@ import { insightArticles, insightCategories } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Insights — Skillex",
   description:
-    "Career guides and practical industry insights across Digital Marketing, Business Administration & Accounting, and Office Administration & HR.",
+    "Career guides and practical industry insights across Digital Marketing, Accounting & Taxation, and Office Administration.",
 };
 
 export default function InsightsPage() {

@@ -14,6 +14,7 @@ export default function CourseTemplate({ course }: { course: Course }) {
 
   const glance = [
     ...(duration ? [{ label: "Duration", value: duration }] : []),
+    { label: "Daily commitment", value: course.dailyHours },
     { label: "Learning mode", value: course.learningStyle },
     { label: "Who it's for", value: course.whoShouldJoin[0] },
   ];

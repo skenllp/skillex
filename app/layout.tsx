@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Practical, career-focused programs in Office Administration & Accounting, Sales Management & HR, and AI-Integrated Digital Marketing.",
+    "Practical 6-month programs in Office Administration & Basic Accounting, AI Integrated Digital Marketing & Graphic Designing, and Professional Diploma in Accounting & Taxation.",
   alternates: { canonical: "./" },
   twitter: { card: "summary_large_image" },
   openGraph: {

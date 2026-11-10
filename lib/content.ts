@@ -42,11 +42,12 @@ export const courses = [
     n: "01",
     number: 1,
     slug: "business-administration-accounting",
-    title: "Office Administration & Accounting",
-    category: "Office Administration & Accounting",
-    duration: "3 Month Career Program",
+    title: "Office Administration & Basic Accounting",
+    category: "Office Administration & Basic Accounting",
+    duration: "6 Month Program — 4 months classes + 2 months Internship / Job Opportunity",
+    dailyHours: "3 hours a day",
     image: images.courseAccounting,
-    imageAlt: "Office Administration & Accounting training at Skillex",
+    imageAlt: "Office Administration & Basic Accounting training at Skillex",
     short: "Build practical office, accounting and business administration skills.",
     /** Verbatim course overview from the official Business Administration
      * & Accounting course PDF. */
@@ -76,6 +77,7 @@ export const courses = [
       "Job Seekers",
       "Beginners in Accounting",
       "Entrepreneurs & Business Owners",
+      "Homemakers returning to study and work",
       "Anyone looking to build a career in Administration & Finance",
     ],
     /** Verbatim "Career Opportunities" from the official course PDF.
@@ -120,7 +122,7 @@ export const courses = [
      * Professional Development (corrected from a PDF layout/typo split). */
     whyChoose: ["Practical Learning", "Industry-Relevant Skills", "Career-Focused Training", "Professional Development"],
     whatsappMessage:
-      "Hi Skillex, I'm interested in the Office Administration & Accounting course. I would like to know more about the programme.",
+      "Hi Skillex, I'm interested in the Office Administration & Basic Accounting course. I would like to know more about the programme.",
     keywords: [
       "business administration",
       "accounting",
@@ -133,101 +135,28 @@ export const courses = [
       "financial documentation",
     ],
     seo: {
-      title: "Accounting & Tally Course in Malappuram | Skillex",
+      title: "Office Admin & Accounting Course Malappuram | Skillex",
       description:
-        "3-month career program in accounting, Tally, GST basics, MS Excel and office administration. Practical training in Parappanangadi, Kerala.",
-    },
-  },
-  {
-    id: "office-administration-hr",
-    n: "02",
-    number: 2,
-    slug: "office-administration-hr",
-    title: "Sales Management & HR",
-    category: "Sales Management & HR",
-    image: images.courseSalesHr,
-    imageAlt: "Sales Management and HR training at Skillex",
-    short: "Learn sales, people management and modern HR practices.",
-    intro:
-      "A practical career-focused programme designed to develop the administrative, communication and people-management skills needed in modern workplaces.",
-    focus: "Running the administrative and people-support backbone of a modern workplace.",
-    learningStyle: "Hands-on office simulation, documentation drills and HR case practice.",
-    skillTags: ["Office Administration", "HR Fundamentals", "Workplace Communication", "Office Software"],
-    keySkills: [
-      "Office Administration",
-      "HR Fundamentals",
-      "Workplace Communication",
-      "Documentation & Coordination",
-      "Office Software",
-      "Employee Support",
-      "Professional Etiquette",
-    ],
-    whoShouldJoin: [
-      "School or college leavers exploring an office-based career",
-      "Career switchers moving into administration or HR support roles",
-      "Anyone who wants structured, practical office and people skills",
-    ],
-    careerPaths: [
-      { title: "Office Administrator", tag: "Administration" },
-      { title: "Administrative Assistant", tag: "Operations" },
-      { title: "HR Assistant", tag: "People Support" },
-      { title: "HR Coordinator", tag: "People Support" },
-      { title: "Front Office Executive", tag: "Client Relations" },
-      { title: "Office Coordinator", tag: "Project Support" },
-      { title: "People Operations Assistant", tag: "HR Operations" },
-    ],
-    curriculumGroups: [
-      {
-        title: "What You'll Learn",
-        items: [
-          "Office Management & Administration",
-          "MS Word, Excel & PowerPoint",
-          "Professional Email & Communication",
-          "Documentation & Filing",
-          "Data Entry & Record Management",
-          "Scheduling & Appointment Management",
-          "Meeting & Event Coordination",
-          "Customer Service Skills",
-          "Basic Accounting & Billing",
-          "HR & Administrative Support",
-          "Professional Etiquette",
-          "Workplace Communication",
-        ],
-      },
-    ],
-    whatsappMessage:
-      "Hi Skillex, I'm interested in the Sales Management & HR course. I would like to know more about the programme.",
-    keywords: [
-      "office administration",
-      "hr",
-      "human resources",
-      "administrative assistant",
-      "hr coordinator",
-      "office coordinator",
-      "front office",
-      "people operations",
-    ],
-    seo: {
-      title: "Sales & HR Course in Malappuram | Skillex",
-      description:
-        "Career-focused sales management and HR training covering communication, coordination and HR fundamentals. Practical learning in Parappanangadi, Kerala.",
+        "6-month program in office administration and basic accounting: Tally, GST basics, MS Excel. 4 months classes + 2 months internship. Parappanangadi, Kerala.",
     },
   },
   {
     id: "digital-marketing",
-    n: "03",
-    number: 3,
+    n: "02",
+    number: 2,
     slug: "digital-marketing",
-    title: "AI-Integrated Digital Marketing",
-    category: "AI-Integrated Digital Marketing",
+    title: "AI Integrated Digital Marketing & Graphic Designing",
+    category: "AI Integrated Digital Marketing & Graphic Designing",
+    duration: "6 Month Program — 4 months classes + 2 months Internship / Job Opportunity",
+    dailyHours: "3 hours a day",
     image: images.courseDigitalMarketing,
-    imageAlt: "AI-Integrated Digital Marketing training at Skillex",
-    short: "Learn digital marketing with today's AI-powered tools and workflows.",
+    imageAlt: "AI Integrated Digital Marketing & Graphic Designing training at Skillex",
+    short: "Learn digital marketing and graphic designing with today's AI-powered tools.",
     intro:
-      "A practical digital marketing programme covering modern marketing channels, content, advertising, analytics and AI-assisted marketing workflows.",
+      "A practical programme covering digital marketing, graphic designing, content, advertising, analytics and AI-assisted marketing workflows.",
     focus: "Planning, launching and measuring campaigns across today's digital channels.",
     learningStyle: "Live campaign practice, analytics reviews and AI-assisted marketing workflows.",
-    skillTags: ["SEO", "Social Media Marketing", "Meta & Google Advertising", "AI Marketing Tools"],
+    skillTags: ["Social Media Marketing", "Meta & Google Advertising", "Graphic Designing", "AI Marketing Tools"],
     keySkills: [
       "Digital Marketing Strategy",
       "Social Media Marketing",
@@ -239,11 +168,13 @@ export const courses = [
       "AI Marketing Tools",
       "Campaign Planning",
       "Copywriting",
+      "Graphic Designing",
     ],
     whoShouldJoin: [
       "Anyone curious about how brands grow online",
       "Small-business owners who want to market themselves",
-      "Career starters aiming for marketing or social media roles",
+      "Career starters aiming for marketing, design or social media roles",
+      "Homemakers returning to study and work",
     ],
     careerPaths: [
       { title: "Digital Marketing Executive", tag: "Campaigns" },
@@ -252,6 +183,7 @@ export const courses = [
       { title: "Performance Marketing Executive", tag: "Performance Ads" },
       { title: "Content Marketing Executive", tag: "Creative" },
       { title: "Digital Marketing Coordinator", tag: "Campaigns" },
+      { title: "Graphic Designer", tag: "Creative" },
     ],
     /** Verbatim from the official AI-Integrated Digital Marketing course
      * PDF ("What Will You Learn?" + "AI Integration"). */
@@ -270,6 +202,15 @@ export const courses = [
         ],
       },
       {
+        title: "Graphic Designing",
+        items: [
+          "Graphic Design Fundamentals",
+          "Social Media Creatives & Posters",
+          "Branding & Logo Basics",
+          "Layout, Colour & Typography",
+        ],
+      },
+      {
         title: "AI Integration",
         items: [
           "AI Content Creation",
@@ -282,7 +223,7 @@ export const courses = [
       },
     ],
     whatsappMessage:
-      "Hi Skillex, I'm interested in the AI-Integrated Digital Marketing course. I would like to know more about the programme.",
+      "Hi Skillex, I'm interested in the AI Integrated Digital Marketing & Graphic Designing course. I would like to know more about the programme.",
     keywords: [
       "digital marketing",
       "seo",
@@ -292,11 +233,89 @@ export const courses = [
       "meta ads",
       "google ads",
       "ai marketing",
+      "graphic designing",
     ],
     seo: {
-      title: "AI Digital Marketing Course in Malappuram | Skillex",
+      title: "Digital Marketing & Graphic Design Course | Skillex",
       description:
-        "Practical digital marketing course covering social media, Meta ads, content, analytics and AI tools. Learn in Parappanangadi, Kerala.",
+        "6-month AI digital marketing and graphic designing course: social media, Meta ads, content, analytics. 4 months classes + 2 months internship. Parappanangadi.",
+    },
+  },
+  {
+    id: "professional-diploma-accounting-taxation",
+    n: "03",
+    number: 3,
+    slug: "professional-diploma-accounting-taxation",
+    title: "Professional Diploma in Accounting & Taxation",
+    category: "Professional Diploma in Accounting & Taxation",
+    duration: "6 Month Program — 4 months classes + 2 months Internship / Job Opportunity",
+    dailyHours: "3 hours a day",
+    image: images.courseAccounting,
+    imageAlt: "Professional Diploma in Accounting & Taxation training at Skillex",
+    short: "A professional diploma in accounting, GST and taxation for finance careers.",
+    intro:
+      "A professional diploma programme covering accounting, bookkeeping, GST and taxation, designed to prepare learners for accounts and finance roles through practical, software-based training.",
+    focus: "Managing business accounts, GST and tax work with confidence.",
+    learningStyle: "Hands-on accounting-software practice, GST and tax exercises and real-style financial documentation.",
+    skillTags: ["Financial Accounting", "Tally & Accounting Software", "GST", "Taxation"],
+    keySkills: [
+      "Financial Accounting",
+      "Bookkeeping",
+      "Tally & Accounting Software",
+      "GST & Tax Basics",
+      "Taxation Fundamentals",
+      "Payroll Management",
+      "MS Excel for Accounts",
+      "Financial Documentation",
+      "Banking & Financial Transactions",
+    ],
+    whoShouldJoin: [
+      "Commerce students and graduates",
+      "Homemakers returning to study and work",
+      "Job seekers building an accounts career",
+      "Accounts assistants who want to upskill",
+      "Entrepreneurs & business owners",
+    ],
+    careerPaths: [
+      { title: "Accountant", tag: "Accounts & Finance" },
+      { title: "Accounts Executive", tag: "Accounts & Finance" },
+      { title: "Tax Assistant", tag: "Taxation" },
+      { title: "GST Assistant", tag: "Taxation" },
+      { title: "Finance Assistant", tag: "Accounts & Finance" },
+      { title: "Billing Executive", tag: "Accounts & Finance" },
+      { title: "Payroll Assistant", tag: "Accounts & Finance" },
+    ],
+    curriculumGroups: [
+      {
+        title: "What You'll Learn",
+        items: [
+          "Financial Accounting",
+          "Bookkeeping",
+          "Tally & Accounting Software",
+          "GST & Tax Basics",
+          "Taxation Fundamentals",
+          "Payroll Management",
+          "MS Excel for Accounts",
+          "Financial Documentation",
+          "Banking & Financial Transactions",
+        ],
+      },
+    ],
+    whatsappMessage:
+      "Hi Skillex, I'm interested in the Professional Diploma in Accounting & Taxation. I would like to know more about the programme.",
+    keywords: [
+      "accounting diploma",
+      "taxation",
+      "gst",
+      "tally",
+      "bookkeeping",
+      "accountant",
+      "payroll",
+    ],
+    seo: {
+      title: "Accounting & Taxation Diploma Malappuram | Skillex",
+      description:
+        "Professional diploma in accounting, Tally, GST and taxation. 6 months: 4 months classes + 2 months internship. Parappanangadi, Kerala.",
     },
   },
 ] as const;
@@ -528,7 +547,7 @@ export const hiringSectors = [
 export const placementStats = [
   { value: "1:1", label: "Placement Assistance", detail: "Dedicated career support team" },
   { value: "1000+", label: "Successful Alumni", detail: "Placed across top corporate sectors" },
-  { value: "3 Months", label: "Intensive Program", detail: "Hands-on, project-based training" },
+  { value: "6 Months", label: "Career Program", detail: "4 months classes + 2 months internship" },
   { value: "10+", label: "Hiring Industry Sectors", detail: "Corporate, IT, Accounting & more" },
 ];
 
