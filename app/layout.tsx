@@ -47,6 +47,7 @@ const orgJsonLd = {
   url: BASE_URL,
   logo: `${BASE_URL}/assets/skillex-logo.png`,
   email: siteConfig.email,
+  sameAs: [siteConfig.instagramUrl],
   telephone: siteConfig.phoneRaw,
   address: {
     "@type": "PostalAddress",

@@ -20,6 +20,7 @@ export const siteConfig = {
   whatsappPlaceholder: "https://wa.me/919207345034",
   address: "Panayathil Complex, opposite bus stand, Ullanam, Parappanangadi, Keralam 676303",
   addressPlaceholder: "Panayathil Complex, opposite bus stand, Ullanam, Parappanangadi, Keralam 676303",
+  instagramUrl: "https://www.instagram.com/skillexcampus",
   mapsUrl: "https://maps.google.com/?q=Panayathil+Complex,+opposite+bus+stand,+Ullanam,+Parappanangadi,+Kerala+676303",
 };
 

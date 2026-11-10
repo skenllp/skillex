@@ -1,15 +1,11 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/content";
 import Logo from "@/ui/Logo";
 
 const links = navLinks.filter((l) => l.href !== "/");
-const socials = [
-  { Icon: Instagram, label: "Instagram" },
-  { Icon: Facebook, label: "Facebook" },
-  { Icon: Youtube, label: "YouTube" },
-  { Icon: Linkedin, label: "LinkedIn" },
-];
+// Only profiles that actually exist are listed; add Facebook/YouTube/LinkedIn here once they have URLs.
+const socials = [{ Icon: Instagram, label: "Instagram", href: siteConfig.instagramUrl }];
 
 export default function Footer() {
   return (
@@ -19,11 +15,13 @@ export default function Footer() {
           <div>
             <Logo onDark height={32} />
             <div className="mt-6 flex gap-3">
-              {socials.map(({ Icon, label }) => (
+              {socials.map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
-                  aria-label={`${label} (link to be added)`}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-lime hover:text-lime"
                 >
                   <Icon size={18} />
