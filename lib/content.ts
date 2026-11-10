@@ -52,13 +52,13 @@ export const courses = [
     /** Verbatim course overview from the official Business Administration
      * & Accounting course PDF. */
     intro:
-      "The Business Administration & Accounting course is designed to provide practical knowledge in business operations, office management, accounting, financial documentation, and professional workplace skills. It helps learners understand how businesses function while developing the essential accounting and administrative skills required in today's competitive job market.",
-    focus: "Understanding how businesses operate — from office administration to financial documentation.",
+      "The Office Administration & Basic Accounting course gives learners practical knowledge of office management, business operations, basic accounting, financial documentation and professional workplace skills. Over 6 months — 4 months of classes and 2 months of internship / job opportunity — it builds the administrative and accounting fundamentals employers look for.",
+    focus: "Running a modern office — from administration and documentation to basic accounting.",
     learningStyle: "Applied bookkeeping, accounting-software practice and office-administration exercises.",
-    skillTags: ["Business Administration & Management", "Financial Accounting", "Bookkeeping", "GST & Tax Basics"],
+    skillTags: ["Business Administration & Management", "Basic Accounting", "Bookkeeping", "GST & Tax Basics"],
     keySkills: [
       "Business Administration & Management",
-      "Financial Accounting",
+      "Basic Accounting",
       "Bookkeeping",
       "Tally & Accounting Software",
       "GST & Tax Basics",
@@ -103,7 +103,7 @@ export const courses = [
         title: "What You'll Learn",
         items: [
           "Business Administration & Management",
-          "Financial Accounting",
+          "Basic Accounting",
           "Bookkeeping",
           "Tally & Accounting Software",
           "GST & Tax Basics",
