@@ -10,7 +10,7 @@ import FinalCTA from "@/components/FinalCTA";
 export const metadata: Metadata = {
   title: "Skillex | Skill Training Courses in Parappanangadi, Kerala",
   description:
-    "Job-oriented courses in AI digital marketing, accounting with Tally & GST, HR and office administration. Practical training in Parappanangadi, Malappuram.",
+    "6-month job-oriented courses in office administration, accounting & taxation, and AI digital marketing & graphic designing. Parappanangadi, Malappuram.",
 };
 
 export default function Home() {

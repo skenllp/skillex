@@ -5,7 +5,7 @@ import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Job-Oriented Courses in Malappuram | Skillex",
-  description: "Explore Skillex courses: AI-integrated digital marketing, office administration & accounting (Tally, GST), and sales & HR. Practical training in Parappanangadi.",
+  description: "6-month Skillex courses: office administration & basic accounting, AI digital marketing & graphic designing, accounting & taxation diploma. Parappanangadi.",
 };
 
 export default function CoursesPage() {
